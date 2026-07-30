@@ -5,5 +5,12 @@ export default defineNuxtConfig({
     enabled: true,
   },
   css: ['~/assets/css/main.css'],
+  components: [
+    {
+      path: '~/components/ui',
+      prefix: 'Base',
+    },
+    '~/components',
+  ],
   modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint'],
 });
