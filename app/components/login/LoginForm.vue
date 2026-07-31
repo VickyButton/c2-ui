@@ -1,5 +1,7 @@
 <template>
   <BaseForm>
-    <!-- TODO: Implement -->
+    <BaseFormActions>
+      <BaseButtonPrimary>Login</BaseButtonPrimary>
+    </BaseFormActions>
   </BaseForm>
 </template>

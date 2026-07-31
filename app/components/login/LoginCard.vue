@@ -7,8 +7,5 @@
     <BaseCardContent>
       <LoginForm />
     </BaseCardContent>
-    <BaseCardActions>
-      <BaseButtonPrimary>Login</BaseButtonPrimary>
-    </BaseCardActions>
   </BaseCard>
 </template>
