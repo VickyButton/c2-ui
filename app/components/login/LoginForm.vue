@@ -1,7 +1,7 @@
 <template>
   <BaseForm @submit.prevent="submitForm">
     <BaseFormHeader>      
-      <BaseFormTitle>Login</BaseFormTitle>
+      <BaseFormTitle>LOGIN</BaseFormTitle>
       <BaseFormDescription>Enter credentials below.</BaseFormDescription>
     </BaseFormHeader>
     <BaseFormFields>
