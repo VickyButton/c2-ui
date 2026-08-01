@@ -1,5 +1,5 @@
 <template>
-  <BaseButton class="border border-transparent hover:border-primary-500">
+  <BaseButton class="border-transparent hover:border-primary-500">
     <slot />
   </BaseButton>
 </template>
