@@ -37,6 +37,7 @@ const { form } = useForm({
 });
 
 function submitForm() {
+  //TODO: Implement form validation before submitting.
   emit('submit', form.value);
 }
 </script>
