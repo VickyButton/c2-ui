@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: 'VT323';
+  @apply bg-secondary-700 font-[VT323];
 }
 
 input {
