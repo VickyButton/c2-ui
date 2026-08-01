@@ -15,7 +15,7 @@
       </BaseField>
     </BaseFormFields>
     <BaseFormActions>
-      <BaseButtonPrimary>Login</BaseButtonPrimary>
+      <BaseButtonPrimary class="grow">Login</BaseButtonPrimary>
     </BaseFormActions>
   </BaseForm>
 </template>
