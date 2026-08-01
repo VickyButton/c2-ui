@@ -1,7 +1,7 @@
 <template>
   <nav class="flex flex-col justify-between bg-secondary-600">
     <AppLayoutSidebarItemGroup>
-      <AppLayoutSidebarItem to="/" label="DASHBOARD">
+      <AppLayoutSidebarItem to="/dashboard" label="DASHBOARD">
         <AppLayoutSidebarItemIcon>
           <img src="~/assets/icons/dashboard.png" />
         </AppLayoutSidebarItemIcon>
