@@ -1,9 +1,9 @@
 <template>
-  <HomeView />
+  <DashboardView />
 </template>
 
 <script setup lang="ts">
 useHead({
-  title: 'Home',
+  title: 'Dashboard',
 });
 </script>
