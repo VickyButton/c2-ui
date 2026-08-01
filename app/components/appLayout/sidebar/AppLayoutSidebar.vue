@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-secondary-600">
+  <nav class="flex flex-col justify-between bg-secondary-600">
     <AppLayoutSidebarItemGroup>
       <AppLayoutSidebarItem to="/" label="DASHBOARD">
         <AppLayoutSidebarItemIcon>
@@ -14,6 +14,13 @@
       <AppLayoutSidebarItem to="/missions" label="MISSIONS">
         <AppLayoutSidebarItemIcon>
           <img src="~/assets/icons/target.png" />
+        </AppLayoutSidebarItemIcon>
+      </AppLayoutSidebarItem>
+    </AppLayoutSidebarItemGroup>
+    <AppLayoutSidebarItemGroup class="border-t">
+      <AppLayoutSidebarItem to="/settings" label="SETTINGS">
+        <AppLayoutSidebarItemIcon>
+          <img src="~/assets/icons/cog.png" />
         </AppLayoutSidebarItemIcon>
       </AppLayoutSidebarItem>
     </AppLayoutSidebarItemGroup>
