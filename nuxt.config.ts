@@ -12,5 +12,9 @@ export default defineNuxtConfig({
     },
     '~/components',
   ],
+  runtimeConfig: {
+    username: '',
+    password: '',
+  },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint'],
 });
