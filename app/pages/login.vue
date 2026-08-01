@@ -21,7 +21,7 @@ function onLogin(accessToken: string) {
   // Set access token.
   api.setAccessToken(accessToken);
 
-  // Navigate home.
-  navigateTo('/');
+  // Navigate to dashboard.
+  navigateTo('/dashboard');
 }
 </script>
