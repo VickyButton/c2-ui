@@ -1,5 +1,5 @@
 <template>
-  <h1>
+  <h2>
     <slot />
-  </h1>
+  </h2>
 </template>
