@@ -7,11 +7,11 @@
     <BaseFormFields>
       <BaseField>
         <BaseFieldLabel :for="INPUT_USERNAME_ID" autocomplete="username">Username</BaseFieldLabel>
-        <BaseInputText :id="INPUT_USERNAME_ID" :name="INPUT_USERNAME_ID" />
+        <BaseInputText type="text" :id="INPUT_USERNAME_ID" :name="INPUT_USERNAME_ID" v-model="form.username" />
       </BaseField>
       <BaseField>
         <BaseFieldLabel :for="INPUT_PASSWORD_ID" autocomplete="current-password">Password</BaseFieldLabel>
-        <BaseInputPassword :id="INPUT_PASSWORD_ID" :name="INPUT_PASSWORD_ID" />
+        <BaseInputPassword :id="INPUT_PASSWORD_ID" :name="INPUT_PASSWORD_ID" v-model="form.password"  />
       </BaseField>
     </BaseFormFields>
     <BaseFormActions>
@@ -23,4 +23,9 @@
 <script setup lang="ts">
 const INPUT_USERNAME_ID = 'username';
 const INPUT_PASSWORD_ID = 'password';
+
+const { form } = useForm({
+  username: '',
+  password: '',
+});
 </script>
