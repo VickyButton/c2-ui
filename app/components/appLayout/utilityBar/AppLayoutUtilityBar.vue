@@ -3,7 +3,7 @@
     <NuxtLink to="/dashboard">
       <div class="flex flex-row gap-x-2 p-4">
         <BrandLogo size="sm" />
-        <h1>C2-UI</h1>
+        <h2>C2-UI</h2>
       </div>
     </NuxtLink>
   </header>
