@@ -12,6 +12,11 @@ export default defineNuxtConfig({
     },
     '~/components',
   ],
+  app: {
+    head: {
+      titleTemplate: '%s ▪ C2-UI',
+    },
+  },
   runtimeConfig: {
     public: {
       apiBaseUrl: '',
