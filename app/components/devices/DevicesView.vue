@@ -1,3 +1,5 @@
 <template>
-  This is the devices page.
+  <AppLayoutPage title="DEVICES">
+    This is the devices page.
+  </AppLayoutPage>
 </template>
