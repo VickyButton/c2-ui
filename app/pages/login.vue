@@ -7,6 +7,10 @@ useHead({
   title: 'Login',
 })
 
+definePageMeta({
+  layout: 'single-card-layout',
+})
+
 const auth = inject(AUTH_API_AUTH_INJECTION_KEY);
 
 invariant(auth !== undefined, 'Auth API Auth method is not provided.');
