@@ -1,5 +1,5 @@
 <template>
-  <BaseForm>
+  <BaseForm @submit.prevent="submitForm">
     <BaseFormHeader>      
       <BaseFormTitle>Login</BaseFormTitle>
       <BaseFormDescription>Enter credentials below.</BaseFormDescription>
@@ -15,12 +15,19 @@
       </BaseField>
     </BaseFormFields>
     <BaseFormActions>
-      <BaseButtonPrimary class="grow">Login</BaseButtonPrimary>
+      <BaseButtonPrimary type="submit" class="grow">Login</BaseButtonPrimary>
     </BaseFormActions>
   </BaseForm>
 </template>
 
 <script setup lang="ts">
+const emit = defineEmits<{
+  (e: 'submit', data: {
+    username: string;
+    password: string;
+  }): void;
+}>();
+
 const INPUT_USERNAME_ID = 'username';
 const INPUT_PASSWORD_ID = 'password';
 
@@ -28,4 +35,8 @@ const { form } = useForm({
   username: '',
   password: '',
 });
+
+function submitForm() {
+  emit('submit', form.value);
+}
 </script>
