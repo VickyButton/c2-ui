@@ -1,7 +1,5 @@
 <template>
-  <div class="flex items-center gap-x-2">
-    <BaseIcon size="md">
-      <img src="~/assets/icons/drone.png" alt="drone with a camera" />
-    </BaseIcon>
-  </div>
+  <BaseIcon>
+    <img src="~/assets/icons/logo.png" alt="The letter C with a 2 in it" />
+  </BaseIcon>
 </template>
