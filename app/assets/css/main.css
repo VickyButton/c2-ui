@@ -6,3 +6,15 @@
 body {
   font-family: 'VT323';
 }
+
+input {
+  @apply px-2 bg-transparent border;
+}
+
+h1 {
+  @apply text-2xl;
+}
+
+h2 {
+  @apply text-xl;
+}
