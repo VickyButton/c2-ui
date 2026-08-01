@@ -13,8 +13,9 @@ export default defineNuxtConfig({
     '~/components',
   ],
   runtimeConfig: {
-    username: '',
-    password: '',
+    public: {
+      apiBaseUrl: '',
+    },
   },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint'],
 });
