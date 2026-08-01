@@ -23,6 +23,11 @@
           <img src="~/assets/icons/cog.png" />
         </AppLayoutSidebarItemIcon>
       </AppLayoutSidebarItem>
+      <AppLayoutSidebarItem to="/logout" label="LOGOUT">
+        <AppLayoutSidebarItemIcon>
+          <img src="~/assets/icons/exit.png" />
+        </AppLayoutSidebarItemIcon>
+      </AppLayoutSidebarItem>
     </AppLayoutSidebarItemGroup>
   </nav>
 </template>
