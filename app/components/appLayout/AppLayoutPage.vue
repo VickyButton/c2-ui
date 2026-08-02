@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col p-2">
+  <div class="flex flex-col gap-y-2 py-2 px-4">
     <h1>{{ title }}</h1>
     <slot />
   </div>
