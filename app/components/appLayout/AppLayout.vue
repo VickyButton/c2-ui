@@ -3,7 +3,7 @@
     <AppLayoutUtilityBar />
     <div class="flex flex-row grow">
       <AppLayoutSidebar class="grow max-w-[200px] border-r" />
-      <main>
+      <main class="grow">
         <slot />
       </main>
     </div>
