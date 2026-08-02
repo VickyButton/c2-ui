@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex flex-col justify-between bg-secondary-600">
+  <nav class="flex flex-col bg-secondary-600">
     <AppLayoutSidebarItemGroup>
       <AppLayoutSidebarItem to="/dashboard" label="DASHBOARD">
         <AppLayoutSidebarItemIcon>
@@ -22,7 +22,7 @@
         </AppLayoutSidebarItemIcon>
       </AppLayoutSidebarItem>
     </AppLayoutSidebarItemGroup>
-    <AppLayoutSidebarItemGroup class="border-t">
+    <AppLayoutSidebarItemGroup class="border-t mt-auto">
       <AppLayoutSidebarItem to="/settings" label="SETTINGS">
         <AppLayoutSidebarItemIcon>
           <img src="~/assets/icons/cog.png" />
