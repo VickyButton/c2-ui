@@ -6,4 +6,8 @@
 useHead({
   title: 'Routes',
 });
+
+definePageMeta({
+  middleware: ['auth-guard'],
+});
 </script>

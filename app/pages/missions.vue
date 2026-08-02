@@ -6,4 +6,8 @@
 useHead({
   title: 'Missions',
 });
+
+definePageMeta({
+  middleware: ['auth-guard'],
+});
 </script>

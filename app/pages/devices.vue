@@ -6,4 +6,8 @@
 useHead({
   title: 'Devices',
 });
+
+definePageMeta({
+  middleware: ['auth-guard'],
+});
 </script>

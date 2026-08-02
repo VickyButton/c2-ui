@@ -6,4 +6,8 @@
 useHead({
   title: 'Settings',
 });
+
+definePageMeta({
+  middleware: ['auth-guard'],
+});
 </script>
