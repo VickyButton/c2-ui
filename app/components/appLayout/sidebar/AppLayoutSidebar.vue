@@ -11,6 +11,11 @@
           <img src="~/assets/icons/drone.png" />
         </AppLayoutSidebarItemIcon>
       </AppLayoutSidebarItem>
+      <AppLayoutSidebarItem to="/routes" label="ROUTES">
+        <AppLayoutSidebarItemIcon>
+          <img src="~/assets/icons/route.png" />
+        </AppLayoutSidebarItemIcon>
+      </AppLayoutSidebarItem>
       <AppLayoutSidebarItem to="/missions" label="MISSIONS">
         <AppLayoutSidebarItemIcon>
           <img src="~/assets/icons/target.png" />
