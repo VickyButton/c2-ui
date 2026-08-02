@@ -1,5 +1,7 @@
 <template>
   <AppLayoutPage title="SETTINGS">
-    This is the settings page.
+    <div class="flex flex-col w-full max-w-[400px]">
+      <SettingsFeatureFlagsCard />
+    </div>
   </AppLayoutPage>
 </template>
