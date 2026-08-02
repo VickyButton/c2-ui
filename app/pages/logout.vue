@@ -9,7 +9,7 @@ useHead({
 
 definePageMeta({
   layout: 'single-card-layout',
-  middleware: ['logout-guard'],
+  middleware: ['auth-guard'],
 })
 
 const { accessToken } = useAuth();
