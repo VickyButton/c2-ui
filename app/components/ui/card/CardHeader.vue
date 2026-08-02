@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col p-2 border-b">
+  <div class="flex flex-col px-2 py-1 border-b">
     <slot />
   </div>
 </template>
