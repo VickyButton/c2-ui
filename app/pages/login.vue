@@ -9,6 +9,7 @@ useHead({
 
 definePageMeta({
   layout: 'single-card-layout',
+  middleware: ['login-guard'],
 })
 
 const auth = inject(AUTH_API_AUTH_INJECTION_KEY);
