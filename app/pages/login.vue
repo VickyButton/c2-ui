@@ -15,11 +15,11 @@ const auth = inject(AUTH_API_AUTH_INJECTION_KEY);
 
 invariant(auth !== undefined, 'Auth API Auth method is not provided.');
 
-const api = useApi();
+const { accessToken } = useAuth();
 
-function onLogin(accessToken: string) {
+function onLogin(_accessToken: string) {
   // Set access token.
-  api.setAccessToken(accessToken);
+  accessToken.value = _accessToken;
 
   // Navigate to dashboard.
   navigateTo('/dashboard');

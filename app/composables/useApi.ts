@@ -1,6 +1,4 @@
-let accessToken: string | null = null;
-
-export function useApi() {
+export function useApi(accessToken?: string) {
   const runtimeConfig = useRuntimeConfig();
 
   function getFullUrl(endpoint: string) {
@@ -25,10 +23,6 @@ export function useApi() {
     }
 
     return await response.json() as T;
-  }
-
-  function setAccessToken(value: string | null) {
-    accessToken = value;
   }
 
   async function getRequest<T>(endpoint: string, params?: URLSearchParams) {
@@ -96,7 +90,6 @@ export function useApi() {
   }
 
   return {
-    setAccessToken,
     get: getRequest,
     post: postRequest,
     put: putRequest,
