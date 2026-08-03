@@ -18,7 +18,7 @@
       </AppLayoutSidebarItem>
       <AppLayoutSidebarItem v-if="featureFlags.showMissionsPage" to="/missions" label="MISSIONS">
         <AppLayoutSidebarItemIcon>
-          <img src="~/assets/icons/target.png" />
+          <img src="~/assets/icons/flag.png" />
         </AppLayoutSidebarItemIcon>
       </AppLayoutSidebarItem>
     </AppLayoutSidebarItemGroup>
