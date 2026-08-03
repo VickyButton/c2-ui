@@ -4,7 +4,7 @@ import DroneInformationCard from './DroneInformationCard.vue';
 
 describe('DroneInformationCard', () => {
   it('presents nickname if passed', async () => {
-    const droneInformation = {
+    const drone = {
       id: '123',
       nickname: 'some_nickname',
       type: 'drone' as const,
@@ -12,7 +12,7 @@ describe('DroneInformationCard', () => {
     };
     const wrapper = await mountSuspended(DroneInformationCard, {
       props: {
-        droneInformation,
+        drone,
       },
     });
 
@@ -20,14 +20,14 @@ describe('DroneInformationCard', () => {
   });
 
   it('presents drone ID if nickname is not passed', async () => {
-    const droneInformation = {
+    const drone = {
       id: '123',
       type: 'drone' as const,
       status: 'active' as const,
     };
     const wrapper = await mountSuspended(DroneInformationCard, {
       props: {
-        droneInformation,
+        drone,
       },
     });
 

@@ -6,7 +6,7 @@
           <img src="~/assets/icons/drone.png" />
         </BaseIcon>
         <BaseCardTitle>{{ title }}</BaseCardTitle>
-        <DroneStatusBadge :status="droneInformation.status" class="ml-auto" />
+        <DroneStatusBadge :status="drone.status" class="ml-auto" />
       </div>
     </BaseCardHeader>
     <BaseCardActions>
@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import type { DroneInformation } from '~/types/devices';
+import type { Drone } from '~/types/devices';
 
 const emit = defineEmits<{
   (e: 'view'): void;
@@ -29,10 +29,10 @@ const emit = defineEmits<{
 }>();
 
 const props = defineProps<{
-  droneInformation: DroneInformation;
+  drone: Drone;
 }>();
 
-const title = computed(() => props.droneInformation.nickname ?? `DRONE ${props.droneInformation.id}`);
+const title = computed(() => props.drone.nickname ?? `DRONE ${props.drone.id}`);
 
 function view() {
   emit('view');

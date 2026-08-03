@@ -1,12 +1,12 @@
-interface BaseDeviceInformation {
+interface BaseDevice {
   id: string;
   nickname?: string;
 }
 
 export type DroneStatus = 'offline' | 'standby' | 'active';
-export interface DroneInformation extends BaseDeviceInformation {
+export interface Drone extends BaseDevice {
   type: 'drone';
   status: DroneStatus;
 }
 
-export type DeviceInformation = DroneInformation;
+export type Device = Drone;
