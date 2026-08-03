@@ -1,7 +1,9 @@
 <template>
   <AppLayoutPage title="SETTINGS">
     <div class="flex flex-col w-full max-w-[400px]">
-      <SettingsFeatureFlagsCard v-if="showDevSettings" />
+      <section>
+        <SettingsFeatureFlagsCard v-if="showDevSettings" />
+      </section>
     </div>
   </AppLayoutPage>
 </template>

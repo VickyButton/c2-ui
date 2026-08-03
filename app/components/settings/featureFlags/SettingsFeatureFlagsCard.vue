@@ -4,7 +4,7 @@
       <BaseCardTitle>Feature Flags</BaseCardTitle>
     </BaseCardHeader>
     <BaseCardContent>
-      <SettingsFeatureFlagsSection />
+      <SettingsFeatureFlagsToggle />
     </BaseCardContent>
   </BaseCard>
 </template>
