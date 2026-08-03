@@ -5,7 +5,7 @@ interface BaseDeviceInformation {
 
 interface DroneInformation extends BaseDeviceInformation {
   type: 'drone';
-  status: 'active' | 'inactive';
+  status: 'offline' | 'standby' | 'active';
 }
 
 type DeviceInformation = DroneInformation;
