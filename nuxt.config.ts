@@ -22,5 +22,5 @@ export default defineNuxtConfig({
       apiBaseUrl: '',
     },
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/test-utils/module'],
 });
