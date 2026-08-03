@@ -1,13 +1,4 @@
-interface BaseDevice {
-  id: string;
-  nickname?: string;
-}
-
-interface Drone extends BaseDevice {
-  type: 'drone';
-  status: 'offline' | 'standby' | 'active';
-}
-
-type Device = Drone;
+import type { Device } from '~/types/devices';
 
 export type DevicesAPI_GetDevices = () => Promise<Device[]>;
+export type DevicesAPI_SyncDevice = (deviceId: string) => Promise<Device>;
