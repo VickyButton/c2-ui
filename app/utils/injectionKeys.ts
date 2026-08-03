@@ -3,10 +3,11 @@
  * dependencies across the application.
  */
 import type { AuthAPI_Auth } from '~/services/AuthAPI.types';
-import type { DevicesAPI_GetDevices } from '~/services/DevicesAPI.types';
+import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/services/DevicesAPI.types';
 
 /* Auth API */
 export const AUTH_API_AUTH_INJECTION_KEY = Symbol() as InjectionKey<AuthAPI_Auth>;
 
 /* Devices API */
 export const DEVICES_API_GET_DEVICES_INJECTION_KEY = Symbol() as InjectionKey<DevicesAPI_GetDevices>;
+export const DEVICES_API_GET_DEVICE_INJECTION_KEY = Symbol() as InjectionKey<DevicesAPI_GetDevice>; 

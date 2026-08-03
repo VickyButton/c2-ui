@@ -2,7 +2,7 @@
  * This plugin injects dependencies for use across the application.
  */
 import { auth } from '~/services/AuthAPI';
-import { getDevices } from '~/services/DevicesAPI';
+import { getDevice, getDevices } from '~/services/DevicesAPI';
 
 export default defineNuxtPlugin(({ vueApp }) => {
   /* Auth API */
@@ -10,4 +10,5 @@ export default defineNuxtPlugin(({ vueApp }) => {
 
   /* Devices API */
   vueApp.provide(DEVICES_API_GET_DEVICES_INJECTION_KEY, getDevices);
+  vueApp.provide(DEVICES_API_GET_DEVICE_INJECTION_KEY, getDevice);
 });
