@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { DroneStatus } from '~/types/devices';
+import type { DroneStatus } from '~/types/devices.types';
 
 const props = defineProps<{
   status: DroneStatus;

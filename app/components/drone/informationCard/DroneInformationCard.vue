@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Drone } from '~/types/devices';
+import type { Drone } from '~/types/devices.types';
 
 const emit = defineEmits<{
   (e: 'view'): void;
