@@ -1,5 +1,14 @@
 <template>
   <AppLayoutPage title="DEVICES">
-    This is the devices page.
+    <DevicesGroup :getDevices :getDevice />
   </AppLayoutPage>
 </template>
+
+<script setup lang="ts">
+import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/services/DevicesAPI.types';
+
+const props = defineProps<{
+  getDevices: DevicesAPI_GetDevices;
+  getDevice: DevicesAPI_GetDevice;
+}>();
+</script>
