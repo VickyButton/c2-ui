@@ -2,7 +2,7 @@
   <ul class="grid grid-cols-3 gap-4">
     <p v-if="devices.length === 0">No devices registered.</p>
     <li v-for="device in devices">
-      <DroneInformationCard v-if="device.type === 'drone'" :drone="device" @sync="() => syncDevice(device.id)" />
+      <DroneInformationCard v-if="device.type === 'drone'" :drone="device" @sync="syncDevice(device.id)" />
     </li>
   </ul>
 </template>
