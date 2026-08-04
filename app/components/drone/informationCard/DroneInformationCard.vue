@@ -2,10 +2,10 @@
   <BaseCard>
     <BaseCardHeader>
       <div class="flex flex-row items-center gap-x-2">
-        <BaseIcon size="sm">
+        <BaseIcon size="sm" class="shrink-0">
           <img src="~/assets/icons/drone.png" />
         </BaseIcon>
-        <BaseCardTitle>{{ title }}</BaseCardTitle>
+        <BaseCardTitle class="truncate">{{ title }}</BaseCardTitle>
         <DroneStatusBadge :status="drone.status" class="ml-auto" />
       </div>
     </BaseCardHeader>
