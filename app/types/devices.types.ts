@@ -11,7 +11,7 @@ export interface Drone extends BaseDevice {
   /** The status of the drone. */
   status: DroneStatus;
   /** The last-recorded coordinates of the drone. */
-  lastCoordinates: GlobalCoordinates;
+  coordinates: GlobalCoordinates;
 }
 
 export type Device = Drone;
