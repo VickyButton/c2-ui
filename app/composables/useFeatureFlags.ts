@@ -1,5 +1,5 @@
 const featureFlags = ref({
-  showDevicesPage: false,
+  showDevicesPage: true,
   showMissionsPage: false,
   showRoutesPage: false,
 });

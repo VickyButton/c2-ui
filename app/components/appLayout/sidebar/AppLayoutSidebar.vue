@@ -2,36 +2,24 @@
   <nav class="flex flex-col bg-secondary-600">
     <AppLayoutSidebarItemGroup>
       <AppLayoutSidebarItem to="/dashboard" label="DASHBOARD">
-        <AppLayoutSidebarItemIcon>
-          <img src="~/assets/icons/dashboard.png" />
-        </AppLayoutSidebarItemIcon>
+        <AppLayoutSidebarItemIcon name="dashboard" />
       </AppLayoutSidebarItem>
       <AppLayoutSidebarItem v-if="featureFlags.showDevicesPage" to="/devices" label="DEVICES">
-        <AppLayoutSidebarItemIcon>
-          <img src="~/assets/icons/drone.png" />
-        </AppLayoutSidebarItemIcon>
+        <AppLayoutSidebarItemIcon name="drone" />
       </AppLayoutSidebarItem>
       <AppLayoutSidebarItem v-if="featureFlags.showRoutesPage" to="/routes" label="ROUTES">
-        <AppLayoutSidebarItemIcon>
-          <img src="~/assets/icons/route.png" />
-        </AppLayoutSidebarItemIcon>
+        <AppLayoutSidebarItemIcon name="route" />
       </AppLayoutSidebarItem>
       <AppLayoutSidebarItem v-if="featureFlags.showMissionsPage" to="/missions" label="MISSIONS">
-        <AppLayoutSidebarItemIcon>
-          <img src="~/assets/icons/flag.png" />
-        </AppLayoutSidebarItemIcon>
+        <AppLayoutSidebarItemIcon name="flag" />
       </AppLayoutSidebarItem>
     </AppLayoutSidebarItemGroup>
     <AppLayoutSidebarItemGroup class="border-t mt-auto">
       <AppLayoutSidebarItem to="/settings" label="SETTINGS">
-        <AppLayoutSidebarItemIcon>
-          <img src="~/assets/icons/cog.png" />
-        </AppLayoutSidebarItemIcon>
+        <AppLayoutSidebarItemIcon name="cog" />
       </AppLayoutSidebarItem>
       <AppLayoutSidebarItem to="/logout" label="LOGOUT">
-        <AppLayoutSidebarItemIcon>
-          <img src="~/assets/icons/exit.png" />
-        </AppLayoutSidebarItemIcon>
+        <AppLayoutSidebarItemIcon name="exit" />
       </AppLayoutSidebarItem>
     </AppLayoutSidebarItemGroup>
   </nav>

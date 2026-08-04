@@ -4,14 +4,20 @@
     'w-12 h-12': size === 'md',
     'w-16 h-16': size === 'lg',
     }">
-    <slot />
+    <img :src :alt />
   </div>
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
+  name: string;
   size?: 'sm' | 'md' | 'lg';
 }>(), {
   size: 'md',
 });
+
+const { getIcon } = useIcon();
+const icon = computed(() => getIcon(props.name));
+const src = computed(() => icon.value.src);
+const alt = computed(() => icon.value.alt);
 </script>
