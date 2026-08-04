@@ -4,10 +4,16 @@ import TileLayer from 'ol/layer/Tile';
 import { OSM } from 'ol/source';
 
 export class GlobalMapOL implements GlobalMap {
-  private readonly map: Map;
+  private _map?: Map;
 
-  constructor(containerId: string) {
-    this.map = new Map({
+  private get map() {
+    invariant(this._map !== undefined, 'Map is not defined.');
+
+    return this._map;
+  }
+
+  public load(containerId: string) {
+    this._map = new Map({
       target: containerId,
       layers: [
         new TileLayer({
@@ -18,6 +24,7 @@ export class GlobalMapOL implements GlobalMap {
         center: [0, 0],
         zoom: 2,
       }),
+      controls: [],
     });
   }
 
