@@ -3,17 +3,14 @@
 </template>
 
 <script setup lang="ts">
+import type { AuthAPI_Auth } from '~/services/AuthAPI.types';
+
 const emit = defineEmits<{
   (e: 'login', accessToken: string): void;
 }>();
 
 defineProps<{
-  auth: (data: {
-    username: string;
-    password: string;
-  }) => Promise<{
-    accessToken: string;
-  }>;
+  auth: AuthAPI_Auth;
 }>();
 
 function onLogin(accessToken: string) {

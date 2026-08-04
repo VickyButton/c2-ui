@@ -7,17 +7,14 @@
 </template>
 
 <script setup lang="ts">
+import type { AuthAPI_Auth } from '~/services/AuthAPI.types';
+
 const emit = defineEmits<{
   (e: 'login', accessToken: string): void;
 }>();
 
 const props = defineProps<{
-  auth: (data: {
-    username: string;
-    password: string;
-  }) => Promise<{
-    accessToken: string;
-  }>;
+  auth: AuthAPI_Auth;
 }>();
 
 async function onSubmit(data: {
