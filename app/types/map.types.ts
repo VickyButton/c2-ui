@@ -1,0 +1,15 @@
+export interface GlobalCoordinates {
+  /** The position latitude in decimal degrees. */
+  latitude: number;
+  /** The position longitude in decimal degrees. */
+  longitude: number;
+  /** The position altitude in meters, relative to sea level. */
+  altitude: number;
+}
+
+export interface GlobalMap {
+  /** Sets the current coordinates at which the map view is centered at. */
+  setView(latitude: number, longitude: number): void;
+  /** Sets the current zoom level at which the map is viewed at. */
+  setZoom(zoom: number): void;
+}
