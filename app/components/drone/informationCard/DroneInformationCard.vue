@@ -7,6 +7,9 @@
         <DroneStatusBadge :status="drone.status" class="ml-auto" />
       </div>
     </BaseCardHeader>
+    <BaseCardContent>
+      <DronePositionMap :drone />
+    </BaseCardContent>
     <BaseCardActions>
       <BaseCardAction>
         <BaseButtonPrimary class="w-full" @click="view">VIEW</BaseButtonPrimary>
