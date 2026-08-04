@@ -6,12 +6,6 @@ import { OSM } from 'ol/source';
 export class GlobalMapOL implements GlobalMap {
   private _map?: Map;
 
-  private get map() {
-    invariant(this._map !== undefined, 'Map is not defined.');
-
-    return this._map;
-  }
-
   public load(containerId: string) {
     this._map = new Map({
       target: containerId,
@@ -29,18 +23,20 @@ export class GlobalMapOL implements GlobalMap {
   }
 
   public setView(latitude: number, longitude: number) {
-    this.map.setView(new View({
-      center: [latitude, longitude],
-    }));
+    this.view.setCenter([latitude, longitude]);
   }
 
   public setZoom(zoom: number) {
-    const currentView = this.map.getView();
-    const center = currentView.getCenter();
+    this.view.setZoom(zoom);
+  }
 
-    this.map.setView(new View({
-      center,
-      zoom,
-    }));
+  private get map() {
+    invariant(this._map !== undefined, 'Map is not defined.');
+
+    return this._map;
+  }
+
+  private get view() {
+    return this.map.getView();
   }
 }
