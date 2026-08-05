@@ -19,6 +19,10 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Parti
 
   const clampZoom = (value: number) => clamp(value, options.minZoom, options.maxZoom);
 
+  function setZoom(value: number) {
+    map.setZoom(clampZoom(value));
+  }
+
   function zoomIn() {
     const currentValue = map.zoom;
     const newValue = clampZoom(currentValue + 1);
@@ -36,6 +40,7 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Parti
   return {
     map,
     load,
+    setZoom,
     zoomIn,
     zoomOut,
   };
