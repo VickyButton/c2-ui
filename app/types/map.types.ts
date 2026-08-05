@@ -22,6 +22,6 @@ export interface GlobalMap {
 }
 
 export interface GlobalMapOptions {
-  maxZoom?: number;
-  minZoom?: number;
+  maxZoom: number;
+  minZoom: number;
 }

@@ -1,12 +1,23 @@
 import type { GlobalMapConstructor } from '~/services/GlobalMap.types';
+import type { GlobalMapOptions } from '~/types/map.types';
 
-// TODO: Add config interface for max zoom, min zoom, etc.
-const MIN_ZOOM = 0;
-const MAX_ZOOM = 20;
-const clampZoom = (value: number) => clamp(value, MIN_ZOOM, MAX_ZOOM);
+const defaultOptions = {
+  minZoom: 0,
+  maxZoom: 20,
+};
 
-export function useGlobalMap(GlobalMap: GlobalMapConstructor) {
+export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Partial<GlobalMapOptions>) {
+  const options = {
+    ...defaultOptions,
+    ...mapOptions,
+  };
   const map = new GlobalMap();
+
+  function load(containerId: string) {
+    map.load(containerId, options);
+  }
+
+  const clampZoom = (value: number) => clamp(value, options.minZoom, options.maxZoom);
 
   function zoomIn() {
     const currentValue = map.zoom;
@@ -24,6 +35,7 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor) {
 
   return {
     map,
+    load,
     zoomIn,
     zoomOut,
   };
