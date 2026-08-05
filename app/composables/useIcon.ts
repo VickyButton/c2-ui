@@ -1,5 +1,25 @@
 const ICONS_PATH = '/icons';
 const icons = {
+  'battery-empty': {
+    src: `${ICONS_PATH}/battery-empty.png`,
+    alt: 'An empty battery with no energy bars.',
+  },
+  'battery-full': {
+    src: `${ICONS_PATH}/battery-full.png`,
+    alt: 'A full battery with 4 energy bars.',
+  },
+  'battery-half': {
+    src: `${ICONS_PATH}/battery-half.png`,
+    alt: 'A half-full battery with 2 energy bars.',
+  },
+  'battery-healthy': {
+    src: `${ICONS_PATH}/battery-healthy.png`,
+    alt: 'A three-quarters-full battery with 3 energy bars.',
+  },
+  'battery-low': {
+    src: `${ICONS_PATH}/battery-low.png`,
+    alt: 'A quarter-full battery with 1 energy bar.',
+  },
   cog: {
     src: `${ICONS_PATH}/cog.png`,
     alt: 'A mechanical cog with 8 teeth.',
