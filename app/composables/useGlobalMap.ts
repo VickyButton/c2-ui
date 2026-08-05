@@ -1,5 +1,5 @@
 import type { GlobalMapConstructor } from '~/services/GlobalMap.types';
-import type { GlobalMapOptions } from '~/types/map.types';
+import type { GlobalCoordinates2D, GlobalMapOptions } from '~/types/map.types';
 
 const defaultOptions = {
   minZoom: 0,
@@ -15,6 +15,10 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Parti
 
   function load(containerId: string) {
     map.load(containerId, options);
+  }
+
+  function setCenter(value: GlobalCoordinates2D) {
+    map.setCenter(value);
   }
 
   const clampZoom = (value: number) => clamp(value, options.minZoom, options.maxZoom);
@@ -38,8 +42,8 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Parti
   }
 
   return {
-    map,
     load,
+    setCenter,
     setZoom,
     zoomIn,
     zoomOut,

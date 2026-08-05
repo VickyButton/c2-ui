@@ -1,5 +1,5 @@
 <template>
-  <GlobalMapContainer :id="containerId" @zoomIn="zoomIn" @zoomOut="zoomOut" />
+  <GlobalMapContainer :id="containerId" @zoomIn="map.zoomIn" @zoomOut="map.zoomOut" />
 </template>
 
 <script setup lang="ts">
@@ -15,13 +15,13 @@ const GlobalMap = inject(GLOBAL_MAP_CONSTRUCTOR_INJECTION_KEY);
 
 invariant(GlobalMap !== undefined, 'GlobalMap constructor is not provided.');
 
-const { map, load, zoomIn, zoomOut } = useGlobalMap(GlobalMap, {
+const map = useGlobalMap(GlobalMap, {
   minZoom: 0,
   maxZoom: 20,
 });
 
 onMounted(() => {
-  load(containerId.value);
+  map.load(containerId.value);
   map.setCenter(props.drone.coordinates);
 });
 
