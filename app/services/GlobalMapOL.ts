@@ -1,8 +1,8 @@
 import type { GlobalMap } from '~/types/map.types';
 import { Map, View } from 'ol';
-import TileLayer from 'ol/layer/Tile';
-import { OSM } from 'ol/source';
+import { XYZ } from 'ol/source';
 import { useGeographic } from 'ol/proj';
+import TileLayer from 'ol/layer/Tile';
 
 export class GlobalMapOL implements GlobalMap {
   private _map?: Map;
@@ -16,7 +16,9 @@ export class GlobalMapOL implements GlobalMap {
       target: containerId,
       layers: [
         new TileLayer({
-          source: new OSM(),
+          source: new XYZ({
+            url: 'https://basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png',
+          }),
         }),
       ],
       view: new View({
