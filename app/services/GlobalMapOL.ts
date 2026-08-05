@@ -1,4 +1,4 @@
-import type { GlobalMap } from '~/types/map.types';
+import type { GlobalCoordinates2D, GlobalMap } from '~/types/map.types';
 import { Map, View } from 'ol';
 import { XYZ } from 'ol/source';
 import { useGeographic } from 'ol/proj';
@@ -29,7 +29,7 @@ export class GlobalMapOL implements GlobalMap {
     });
   }
 
-  public setCenter(latitude: number, longitude: number) {
+  public setCenter({ latitude, longitude }: GlobalCoordinates2D) {
     this.view.setCenter([latitude, longitude]);
   }
 

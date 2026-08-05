@@ -1,4 +1,4 @@
-import type { GlobalCoordinates } from './map.types';
+import type { GlobalCoordinates3D } from './map.types';
 
 interface BaseDevice {
   id: string;
@@ -11,7 +11,7 @@ export interface Drone extends BaseDevice {
   /** The status of the drone. */
   status: DroneStatus;
   /** The last-recorded coordinates of the drone. */
-  coordinates: GlobalCoordinates;
+  coordinates: GlobalCoordinates3D;
 }
 
 export type Device = Drone;
