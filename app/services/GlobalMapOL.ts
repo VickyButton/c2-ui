@@ -43,8 +43,8 @@ export class GlobalMapOL implements GlobalMap {
     this.view.setCenter([latitude, longitude]);
   }
 
-  public setZoom(zoom: number) {
-    this.view.setZoom(zoom);
+  public setZoom(value: number) {
+    this.view.setZoom(value);
   }
 
   private get map() {
