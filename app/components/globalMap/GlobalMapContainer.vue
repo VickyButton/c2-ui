@@ -1,6 +1,6 @@
 <template>
   <div role="application" class="relative">
-    <GlobalMapControlsZoom v-if="showZoomControls" class="absolute z-10" @zoomIn="zoomIn" @zoomOut="zoomOut" />
+    <GlobalMapControlsZoom v-if="showZoomControls" class="absolute bottom-0 right-0 z-10" @zoomIn="zoomIn" @zoomOut="zoomOut" />
   </div>
 </template>
 
