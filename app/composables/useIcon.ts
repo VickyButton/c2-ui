@@ -28,6 +28,14 @@ const icons = {
     src: `${ICONS_PATH}/logo.png`,
     alt: 'The letter "C" with a 2 enveloped within it.',
   },
+  minus: {
+    src: `${ICONS_PATH}/minus.png`,
+    alt: 'A minus sign.',
+  },
+  plus: {
+    src: `${ICONS_PATH}/plus.png`,
+    alt: 'A plus sign.',
+  },
   'question-mark': {
     src: `${ICONS_PATH}/question-mark.png`,
     alt: 'A circle with a question mark inside.',
