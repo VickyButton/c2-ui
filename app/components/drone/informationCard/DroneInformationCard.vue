@@ -4,7 +4,10 @@
       <div class="flex flex-row items-center gap-x-2">
         <BaseIcon name="drone" size="sm" class="shrink-0" />
         <BaseCardTitle class="truncate">{{ title }}</BaseCardTitle>
-        <DroneStatusBadge :status="drone.status" class="ml-auto" />
+        <div class="flex gap-x-2 ml-auto">
+          <DroneStatusBadge :status="drone.status" />
+          <DroneBattery :battery="drone.battery" size="sm" class="shrink-0" />
+        </div>
       </div>
     </BaseCardHeader>
     <BaseCardContent>
