@@ -29,7 +29,7 @@ export class GlobalMapOL implements GlobalMap {
     });
   }
 
-  public setView(latitude: number, longitude: number) {
+  public setCenter(latitude: number, longitude: number) {
     this.view.setCenter([latitude, longitude]);
   }
 

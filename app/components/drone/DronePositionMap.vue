@@ -21,10 +21,10 @@ const { map } = useGlobalMap(GlobalMap);
 
 onMounted(() => {
   map.load(containerId.value);
-  map.setView(props.drone.coordinates.latitude, props.drone.coordinates.longitude);
+  map.setCenter(props.drone.coordinates.latitude, props.drone.coordinates.longitude);
 });
 
 watch(() => props.drone.coordinates, ({ latitude, longitude}) => {
-  map.setView(latitude, longitude);
+  map.setCenter(latitude, longitude);
 });
 </script>
