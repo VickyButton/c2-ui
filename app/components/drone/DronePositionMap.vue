@@ -3,13 +3,14 @@
 </template>
 
 <script setup lang="ts">
-import type { Drone } from '~/types/devices.types';
+import type { GlobalCoordinates2D } from '~/types/map.types';
 
 const props = defineProps<{
-  drone: Drone;
+  droneId: string;
+  droneCoordinates: GlobalCoordinates2D;
 }>();
 
-const containerId = computed(() => `drone-position-map-${props.drone.id}`);
+const containerId = computed(() => `drone-position-map-${props.droneId}`);
 
 const GlobalMap = inject(GLOBAL_MAP_CONSTRUCTOR_INJECTION_KEY);
 
@@ -22,10 +23,10 @@ const map = useGlobalMap(GlobalMap, {
 
 onMounted(() => {
   map.load(containerId.value);
-  map.setCenter(props.drone.coordinates);
+  map.setCenter(props.droneCoordinates);
 });
 
-watch(() => props.drone.coordinates, (newValue) => {
+watch(() => props.droneCoordinates, (newValue) => {
   map.setCenter(newValue);
 });
 </script>

@@ -11,7 +11,7 @@
       </div>
     </BaseCardHeader>
     <BaseCardContent>
-      <DronePositionMap :drone class="aspect-square border bg-white" />
+      <DronePositionMap :droneId="drone.id" :droneCoordinates="drone.coordinates" class="aspect-square border bg-white" />
     </BaseCardContent>
     <BaseCardActions>
       <BaseCardAction>
