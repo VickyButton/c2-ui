@@ -17,7 +17,7 @@ export class GlobalMapOL implements GlobalMap {
       layers: [
         new TileLayer({
           source: new XYZ({
-            url: 'https://basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png',
+            url: 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
           }),
         }),
       ],
