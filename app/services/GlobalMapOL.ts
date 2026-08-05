@@ -7,6 +7,14 @@ import TileLayer from 'ol/layer/Tile';
 export class GlobalMapOL implements GlobalMap {
   private _map?: Map;
 
+  public get zoom() {
+    const value = this.view.getZoom();
+
+    invariant(value !== undefined, 'Zoom value is not defined.');
+
+    return value;
+  }
+
   public load(containerId: string) {
     // Allows GPS coordinates to be used.
     useGeographic();

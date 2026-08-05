@@ -11,6 +11,8 @@ export interface GlobalCoordinates3D extends GlobalCoordinates2D {
 }
 
 export interface GlobalMap {
+  /** The current zoom value of the map view. */
+  readonly zoom: number;
   /** Loads the map and mounts it to specified container. */
   load(containerId: string): void;
   /** Sets the current coordinates at which the map view is centered at. */
