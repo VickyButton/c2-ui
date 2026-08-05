@@ -21,6 +21,7 @@ describe('DevicesGroup', () => {
     ]);
 
     const wrapper = await mountSuspended(DevicesGroup, {
+      shallow: true,
       props: {
         getDevice,
         getDevices,

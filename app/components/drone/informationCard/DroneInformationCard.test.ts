@@ -9,6 +9,11 @@ describe('DroneInformationCard', () => {
       nickname: 'some_nickname',
       type: 'drone' as const,
       status: 'active' as const,
+      coordinates: {
+        latitude: 0,
+        longitude: 0,
+        altitude: 0,
+      },
     };
     const wrapper = await mountSuspended(DroneInformationCard, {
       props: {
@@ -24,6 +29,11 @@ describe('DroneInformationCard', () => {
       id: '123',
       type: 'drone' as const,
       status: 'active' as const,
+      coordinates: {
+        latitude: 0,
+        longitude: 0,
+        altitude: 0,
+      },
     };
     const wrapper = await mountSuspended(DroneInformationCard, {
       props: {
