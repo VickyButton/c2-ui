@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import Icon from '../ui/Icon.vue';
-import DroneBatteryIcon from './DroneBatteryIcon.vue/index.js';
+import DroneBatteryIcon from './DroneBatteryIcon.vue';
 
 describe('DroneBatteryIcon', () => {
   it.each([
