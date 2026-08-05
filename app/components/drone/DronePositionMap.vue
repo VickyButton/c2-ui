@@ -1,11 +1,9 @@
 <template>
-  <div :id="containerId" />
+  <GlobalMapContainer :id="containerId" />
 </template>
 
 <script setup lang="ts">
 import type { Drone } from '~/types/devices.types';
-
-import 'ol/ol.css';
 
 const props = defineProps<{
   drone: Drone;
