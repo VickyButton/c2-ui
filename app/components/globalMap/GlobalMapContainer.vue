@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+// Import OpenLayers stylesheet needed for styling map.
 import 'ol/ol.css';
 
 const emit = defineEmits<{
