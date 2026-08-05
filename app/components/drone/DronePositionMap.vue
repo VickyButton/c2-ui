@@ -18,7 +18,10 @@ invariant(GlobalMap !== undefined, 'GlobalMap constructor is not provided.');
 const { map, zoomIn, zoomOut } = useGlobalMap(GlobalMap);
 
 onMounted(() => {
-  map.load(containerId.value);
+  map.load(containerId.value, {
+    minZoom: 0,
+    maxZoom: 20,
+  });
   map.setCenter(props.drone.coordinates);
 });
 

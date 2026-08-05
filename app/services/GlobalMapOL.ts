@@ -1,4 +1,4 @@
-import type { GlobalCoordinates2D, GlobalMap } from '~/types/map.types';
+import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions } from '~/types/map.types';
 import { Map, View } from 'ol';
 import { XYZ } from 'ol/source';
 import { useGeographic } from 'ol/proj';
@@ -15,7 +15,7 @@ export class GlobalMapOL implements GlobalMap {
     return value;
   }
 
-  public load(containerId: string) {
+  public load(containerId: string, options?: GlobalMapOptions) {
     // Allows GPS coordinates to be used.
     useGeographic();
 
@@ -32,6 +32,8 @@ export class GlobalMapOL implements GlobalMap {
       view: new View({
         center: [0, 0],
         zoom: 16,
+        minZoom: options?.minZoom,
+        maxZoom: options?.maxZoom,
       }),
       controls: [],
     });
