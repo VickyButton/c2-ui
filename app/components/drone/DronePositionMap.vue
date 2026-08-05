@@ -1,5 +1,5 @@
 <template>
-  <GlobalMapContainer :id="containerId" />
+  <GlobalMapContainer :id="containerId" @zoomIn="zoomIn" @zoomOut="zoomOut" />
 </template>
 
 <script setup lang="ts">
@@ -15,7 +15,7 @@ const GlobalMap = inject(GLOBAL_MAP_CONSTRUCTOR_INJECTION_KEY);
 
 invariant(GlobalMap !== undefined, 'GlobalMap constructor is not provided.');
 
-const { map } = useGlobalMap(GlobalMap);
+const { map, zoomIn, zoomOut } = useGlobalMap(GlobalMap);
 
 onMounted(() => {
   map.load(containerId.value);
