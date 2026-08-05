@@ -6,7 +6,7 @@
         <BaseCardTitle class="truncate">{{ title }}</BaseCardTitle>
         <div class="flex gap-x-2 ml-auto">
           <DroneStatusBadge :status="drone.status" />
-          <DroneBattery :battery="drone.battery" size="sm" class="shrink-0" />
+          <DroneBatteryIcon :battery="drone.battery" size="sm" class="shrink-0" />
         </div>
       </div>
     </BaseCardHeader>

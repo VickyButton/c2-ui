@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import Icon from '../ui/Icon.vue';
-import DroneBattery from './DroneBattery.vue';
+import DroneBatteryIcon from './DroneBatteryIcon.vue/index.js';
 
-describe('DroneBattery', () => {
+describe('DroneBatteryIcon', () => {
   it.each([
     {
       battery: 75,
@@ -26,7 +26,7 @@ describe('DroneBattery', () => {
       name: 'battery-empty',
     },
   ])('presents $name icon when battery is at $battery%', async ({ battery, name }) => {
-    const wrapper = await mountSuspended(DroneBattery, {
+    const wrapper = await mountSuspended(DroneBatteryIcon, {
       props: {
         battery,
       },

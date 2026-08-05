@@ -6,6 +6,7 @@ const drone = {
   id: '123',
   type: 'drone' as const,
   status: 'active' as const,
+  battery: 100,
   coordinates: {
     latitude: 0,
     longitude: 0,
