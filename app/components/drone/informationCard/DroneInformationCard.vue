@@ -8,7 +8,7 @@
       </div>
     </BaseCardHeader>
     <BaseCardContent>
-      <DronePositionMap :drone class="w-full aspect-square border bg-white" />
+      <DronePositionMap :drone class="aspect-square border bg-white" />
     </BaseCardContent>
     <BaseCardActions>
       <BaseCardAction>
