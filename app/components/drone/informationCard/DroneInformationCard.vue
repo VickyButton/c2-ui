@@ -15,7 +15,7 @@
         <BaseButtonPrimary class="w-full" @click="view">VIEW</BaseButtonPrimary>
       </BaseCardAction>
       <BaseCardAction>
-        <BaseButtonPrimary class="w-full" @click="sync">SYNC STATUS</BaseButtonPrimary>
+        <BaseButtonPrimary class="w-full" @click="sync">SYNC</BaseButtonPrimary>
       </BaseCardAction>
     </BaseCardActions>
   </BaseCard>
