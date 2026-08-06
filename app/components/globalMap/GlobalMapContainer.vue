@@ -5,9 +5,6 @@
 </template>
 
 <script setup lang="ts">
-// Import OpenLayers stylesheet needed for styling map.
-import 'ol/ol.css';
-
 const emit = defineEmits<{
   (e: 'zoom-in'): void;
   (e: 'zoom-out'): void;
