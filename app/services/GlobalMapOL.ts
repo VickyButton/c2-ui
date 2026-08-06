@@ -15,6 +15,22 @@ export class GlobalMapOL implements GlobalMap {
   private _map?: MapOL;
   private _markerLayer?: VectorLayer;
 
+  private get map() {
+    invariant(this._map !== undefined, 'Map is not defined.');
+
+    return this._map;
+  }
+
+  private get view() {
+    return this.map.getView();
+  }
+
+  private get markerLayer() {
+    invariant(this._markerLayer !== undefined, 'Marker layer is not defined.');
+
+    return this._markerLayer;
+  }
+
   public get zoom() {
     const value = this.view.getZoom();
 
@@ -135,21 +151,5 @@ export class GlobalMapOL implements GlobalMap {
 
     // Add features to vector source.
     source.removeFeatures([circle, icon]);
-  }
-
-  private get map() {
-    invariant(this._map !== undefined, 'Map is not defined.');
-
-    return this._map;
-  }
-
-  private get view() {
-    return this.map.getView();
-  }
-
-  private get markerLayer() {
-    invariant(this._markerLayer !== undefined, 'Marker layer is not defined.');
-
-    return this._markerLayer;
   }
 }
