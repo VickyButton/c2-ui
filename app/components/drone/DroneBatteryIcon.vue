@@ -11,19 +11,19 @@ const title = computed(() => `${props.battery}%`)
 const name = computed(() => {
   /*
     Battery States:
-    - Full      battery >= 75%
-    - Healthy   battery >= 50%
-    - Half      battery >= 25%
-    - Low       battery >= 10%
-    - Empty     battery < 10%
+    - Full      battery > 75%
+    - Healthy   battery > 50%
+    - Half      battery > 25%
+    - Low       battery > 10%
+    - Empty     battery <= 5%
   */
-  if (props.battery >= 75) {
+  if (props.battery > 75) {
     return 'battery-full';
-  } else if (props.battery >= 50) {
+  } else if (props.battery > 50) {
     return 'battery-healthy';
-  } else if (props.battery >= 25) {
+  } else if (props.battery > 25) {
     return 'battery-half';
-  } else if (props.battery >= 10) {
+  } else if (props.battery > 5) {
     return 'battery-low';
   } else {
     return 'battery-empty';

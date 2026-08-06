@@ -6,23 +6,23 @@ import DroneBatteryIcon from './DroneBatteryIcon.vue';
 describe('DroneBatteryIcon', () => {
   it.each([
     {
-      battery: 75,
+      battery: 100,
       name: 'battery-full',
     },
     {
-      battery: 50,
+      battery: 75,
       name: 'battery-healthy',
     },
     {
-      battery: 25,
+      battery: 50,
       name: 'battery-half',
     },
     {
-      battery: 10,
+      battery: 25,
       name: 'battery-low',
     },
     {
-      battery: 0,
+      battery: 5,
       name: 'battery-empty',
     },
   ])('presents $name icon when battery is at $battery%', async ({ battery, name }) => {
