@@ -41,11 +41,21 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Parti
     map.setZoom(newValue);
   }
 
+  function addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
+    map.addIconMarker(id, src, coordinates);
+  }
+
+  function removeIconMarker(id: string) {
+    map.removeIconMarker(id);
+  }
+
   return {
     load,
     setCenter,
     setZoom,
     zoomIn,
     zoomOut,
+    addIconMarker,
+    removeIconMarker,
   };
 }

@@ -19,6 +19,10 @@ export interface GlobalMap {
   setCenter(value: GlobalCoordinates2D): void;
   /** Sets the current zoom level at which the map is viewed at. */
   setZoom(value: number): void;
+  /** Adds an icon marker at specified coordinates. */
+  addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D): void;
+  /** Removes an icon marker. */
+  removeIconMarker(id: string): void;
 }
 
 export interface GlobalMapOptions {
