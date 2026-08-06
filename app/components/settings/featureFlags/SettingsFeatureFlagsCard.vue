@@ -1,7 +1,7 @@
 <template>
   <BaseCard>
     <BaseCardHeader>
-      <BaseCardTitle>Feature Flags</BaseCardTitle>
+      <BaseCardTitle>FEATURE FLAGS</BaseCardTitle>
     </BaseCardHeader>
     <BaseCardContent>
       <SettingsFeatureFlagsToggle />
