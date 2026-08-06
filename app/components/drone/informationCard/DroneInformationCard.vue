@@ -10,8 +10,21 @@
         </div>
       </div>
     </BaseCardHeader>
-    <BaseCardContent>
-      <DronePositionMap :droneId="drone.id" :droneCoordinates="drone.coordinates" class="aspect-square border bg-white" />
+    <BaseCardContent class="gap-y-2">
+      <div>
+        <p>Last pinged location:</p>
+        <dl class="grid grid-cols-2">
+          <div class="flex flex-row gap-x-1">
+            <dt class="font-bold">Latitude:</dt>
+            <dd>{{ drone.coordinates.latitude }}</dd>
+          </div>
+          <div class="flex flex-row gap-x-1">
+            <dt class="font-bold">Longitude:</dt>
+            <dd>{{ drone.coordinates.longitude }}</dd>
+          </div>
+        </dl>
+      </div>
+      <DronePositionMap :droneId="drone.id" :droneCoordinates="drone.coordinates" class="h-60 border bg-white" />
     </BaseCardContent>
     <BaseCardActions>
       <BaseCardAction>
