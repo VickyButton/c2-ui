@@ -8,6 +8,10 @@ export function useStorage() {
   };
 
   const set = (key: string, value: string | null) => {
+    if (value === null) {
+      return storage.remove(key);
+    }
+
     return storage.set(key, value);
   };
 
