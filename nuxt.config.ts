@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      titleTemplate: '%s ▪ C2-UI',
+      titleTemplate: '%s ▪ C2_UI',
     },
   },
   runtimeConfig: {
