@@ -12,10 +12,10 @@ definePageMeta({
   middleware: ['auth-guard'],
 })
 
-const { accessToken } = useAuth();
+const { setAccessToken } = useAuth();
 
 onMounted(() => {
-  accessToken.value = null;
+  setAccessToken(null);
 
   setTimeout(() => {
     navigateTo('/login');
