@@ -4,6 +4,7 @@
 import { auth } from '~/services/AuthAPI';
 import { getDevice, getDevices } from '~/services/DevicesAPI';
 import { GlobalMapOL } from '~/services/GlobalMapOL';
+import { storageMemory } from '~/services/StorageMemory';
 
 export default defineNuxtPlugin(({ vueApp }) => {
   /* Auth API */
@@ -15,4 +16,7 @@ export default defineNuxtPlugin(({ vueApp }) => {
 
   /* Global Map */
   vueApp.provide(GLOBAL_MAP_CONSTRUCTOR_INJECTION_KEY, GlobalMapOL);
+
+  /* Storage */
+  vueApp.provide(STORAGE_INJECTION_KEY, storageMemory);
 });
