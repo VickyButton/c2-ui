@@ -1,15 +1,17 @@
-import type { Storage } from '~/types/storage.types';
+export function useStorage() {
+  const storage = inject(STORAGE_INJECTION_KEY);
 
-export function useStorage(storage: Storage) {
-  function get(key: string) {
+  invariant(storage !== undefined, 'Storage is not provided.');
+
+  const get = (key: string) => {
     return storage.get(key);
-  }
+  };
 
-  function set(key: string, value: string | null) {
+  const set = (key: string, value: string | null) => {
     return storage.set(key, value);
-  }
+  };
 
-  function getObject<T extends object>(key: string) {
+  const getObject = <T extends object>(key: string) => {
     const data = storage.get(key);
 
     if (data === null) {
@@ -17,11 +19,11 @@ export function useStorage(storage: Storage) {
     }
 
     return JSON.parse(data) as T;
-  }
+  };
 
-  function setObject(key: string, value: object) {
+  const setObject = (key: string, value: object) => {
     return storage.set(key, JSON.stringify(value));
-  }
+  };
 
   return {
     get,
