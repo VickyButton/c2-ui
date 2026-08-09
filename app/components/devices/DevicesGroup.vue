@@ -1,10 +1,15 @@
 <template>
-  <ul class="grid grid-cols-3 gap-4">
+  <div class="flex flex-col gap-y-4">
     <p v-if="devices.length === 0">No devices registered.</p>
-    <li v-for="device in devices">
-      <DroneInformationCard v-if="device.type === 'drone'" :drone="device" @sync="syncDevice(device.id)" />
-    </li>
-  </ul>
+    <section class="flex flex-col gap-y-2">
+      <h2>DRONES</h2>
+      <ul v-if="drones.length > 0" class="grid grid-cols-3 gap-4">
+        <li v-for="drone in drones">
+          <DroneInformationCard :drone @sync="syncDevice(drone.id)" />
+        </li>
+      </ul>
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -16,7 +21,7 @@ const props = defineProps<{
   getDevice: DevicesAPI_GetDevice;
 }>();
 
-const { devices, loadDevices, syncDevice } = useDevicesGroup({
+const { devices, drones, loadDevices, syncDevice } = useDevicesGroup({
   getDevices: props.getDevices,
   getDevice: props.getDevice,
 });

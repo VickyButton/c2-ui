@@ -15,6 +15,7 @@ export function useDevicesGroup(api: {
 }) {
   const devicesMap = ref(toMap([]));
   const devicesArray = computed(() => toArray(devicesMap.value));
+  const drones = computed(() => devicesArray.value.filter(({ type }) => type === 'drone'));
 
   async function loadDevices() {
     const devices = await api.getDevices();
@@ -30,6 +31,7 @@ export function useDevicesGroup(api: {
 
   return {
     devices: devicesArray,
+    drones,
     loadDevices,
     syncDevice,
   };
