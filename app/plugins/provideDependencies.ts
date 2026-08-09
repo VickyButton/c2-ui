@@ -7,7 +7,7 @@ import { GlobalMapOL } from '~/services/GlobalMapOL';
 
 export default defineNuxtPlugin({
   name: 'provide-dependencies',
-  dependsOn: ['provide-api'],
+  dependsOn: ['provide-api', 'provide-storage'],
   setup({ vueApp }) {
     const api = inject(API_INJECTION_KEY);
 
