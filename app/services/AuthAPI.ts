@@ -1,5 +1,5 @@
 import type { API } from '~/types/api.types';
-import type { AuthAPI_Auth } from '../types/authApi.types';
+import type { AuthAPI_Auth } from '~/types/authApi.types';
 
 export class AuthAPI {
   private readonly api: API;
