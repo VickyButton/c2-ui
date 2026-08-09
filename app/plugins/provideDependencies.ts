@@ -1,6 +1,6 @@
-/**
- * This plugin acts as a provider for dependencies used across the application.
- */
+/*
+  This plugin acts as a provider for dependencies used across the application.
+*/
 import { AuthAPI } from '~/services/AuthAPI';
 import { DevicesAPI } from '~/services/DevicesAPI';
 import { GlobalMapOL } from '~/services/GlobalMapOL';
