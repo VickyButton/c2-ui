@@ -1,7 +1,7 @@
 /*
   This plugin acts as a provider for the storage used in the application.
 */
-import { StorageMemory } from '~/services/StorageMemory';
+import { StorageMemory } from '~/services/storage';
 
 export default defineNuxtPlugin({
   name: 'provide-storage',

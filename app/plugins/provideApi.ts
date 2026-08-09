@@ -1,7 +1,7 @@
 /*
   This plugin acts as a provider for the base API used in the application.
 */
-import { APIFetch } from '~/services/APIFetch';
+import { APIFetch } from '~/services/api';
 
 export default defineNuxtPlugin({
   name: 'provide-api',

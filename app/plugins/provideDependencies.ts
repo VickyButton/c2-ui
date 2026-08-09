@@ -1,9 +1,9 @@
 /*
   This plugin acts as a provider for dependencies used across the application.
 */
-import { AuthAPI } from '~/services/AuthAPI';
-import { DevicesAPI } from '~/services/DevicesAPI';
-import { GlobalMapOL } from '~/services/GlobalMapOL';
+import { AuthAPI } from '~/services/authApi';
+import { DevicesAPI } from '~/services/devicesApi';
+import { GlobalMapOL } from '~/services/globalMap';
 
 export default defineNuxtPlugin({
   name: 'provide-dependencies',
