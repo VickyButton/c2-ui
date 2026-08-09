@@ -1,4 +1,4 @@
-class StorageMemory {
+export class StorageMemory {
   public get(key: string) {
     return localStorage.getItem(key);
   }
@@ -11,5 +11,3 @@ class StorageMemory {
     return localStorage.removeItem(key);
   }
 }
-
-export const storageMemory = new StorageMemory();
