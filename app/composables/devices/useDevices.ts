@@ -9,7 +9,7 @@ function toArray(devicesMap: Map<string, Device>) {
   return Array.from(devicesMap.values());
 }
 
-export function useDevicesGroup(api: {
+export function useDevices(api: {
   getDevices: DevicesAPI_GetDevices;
   getDevice: DevicesAPI_GetDevice;
 }) {

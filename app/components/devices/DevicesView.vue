@@ -1,6 +1,6 @@
 <template>
   <AppLayoutPage title="DEVICES">
-    <DevicesGroup :getDevices :getDevice />
+    <Devices :getDevices :getDevice />
   </AppLayoutPage>
 </template>
 

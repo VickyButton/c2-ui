@@ -13,14 +13,14 @@
 
 <script setup lang="ts">
 import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/types/devicesApi.types';
-import { useDevicesGroup } from '~/composables/devices/useDevicesGroup';
+import { useDevices } from '~/composables/devices/useDevices';
 
 const props = defineProps<{
   getDevices: DevicesAPI_GetDevices;
   getDevice: DevicesAPI_GetDevice;
 }>();
 
-const { devices, drones, loadDevices, syncDevice } = useDevicesGroup({
+const { devices, drones, loadDevices, syncDevice } = useDevices({
   getDevices: props.getDevices,
   getDevice: props.getDevice,
 });

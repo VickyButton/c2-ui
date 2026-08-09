@@ -1,12 +1,12 @@
 import { describe, expect, it, vi } from 'vitest';
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import DroneInformationCard from '../drone/informationCard/DroneInformationCard.vue';
-import DevicesGroup from './DevicesGroup.vue';
+import Devices from './Devices.vue';
 
 const getDevice = vi.fn();
 const getDevices = vi.fn();
 
-describe('DevicesGroup', () => {
+describe('Devices', () => {
   it.each([
     {
       type: 'drone',
@@ -20,7 +20,7 @@ describe('DevicesGroup', () => {
       },
     ]);
 
-    const wrapper = await mountSuspended(DevicesGroup, {
+    const wrapper = await mountSuspended(Devices, {
       shallow: true,
       props: {
         getDevice,
