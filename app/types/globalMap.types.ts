@@ -29,3 +29,5 @@ export interface GlobalMapOptions {
   maxZoom: number;
   minZoom: number;
 }
+
+export type GlobalMapConstructor = new () => GlobalMap;

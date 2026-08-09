@@ -1,4 +1,4 @@
-import type { GlobalCoordinates3D } from './map.types';
+import type { GlobalCoordinates3D } from './globalMap.types';
 
 interface BaseDevice {
   id: string;

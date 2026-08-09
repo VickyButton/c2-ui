@@ -1,4 +1,4 @@
-import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions } from '~/types/map.types';
+import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions } from '~/types/globalMap.types';
 import { Feature, Map as MapOL, View } from 'ol';
 import { Vector, XYZ } from 'ol/source';
 import { useGeographic } from 'ol/proj';

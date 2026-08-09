@@ -1,5 +1,4 @@
-import type { GlobalMapConstructor } from '~/types/globalMap.types';
-import type { GlobalCoordinates2D, GlobalMapOptions } from '~/types/map.types';
+import type { GlobalCoordinates2D, GlobalMapConstructor, GlobalMapOptions } from '~/types/globalMap.types';
 
 const defaultOptions = {
   minZoom: 0,

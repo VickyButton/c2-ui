@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { GlobalCoordinates2D } from '~/types/map.types';
+import type { GlobalCoordinates2D } from '~/types/globalMap.types';
 
 const props = defineProps<{
   droneId: string;
