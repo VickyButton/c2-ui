@@ -1,5 +1,5 @@
 import type { API } from '~/types/api.types';
-import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '../types/DevicesAPI.types';
+import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '../types/devicesApi.types';
 
 export class DevicesAPI {
   private readonly api: API;

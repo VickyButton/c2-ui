@@ -2,9 +2,9 @@
  * The purpose of this module is to define and export injection keys for providing and injecting
  * dependencies across the application.
  */
-import type { AuthAPI_Auth } from '~/types/AuthAPI.types';
-import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/types/DevicesAPI.types';
-import type { GlobalMapConstructor } from '~/types/GlobalMap.types';
+import type { AuthAPI_Auth } from '~/types/authApi.types';
+import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/types/devicesApi.types';
+import type { GlobalMapConstructor } from '~/types/globalMap.types';
 import type { API } from '~/types/api.types';
 import type { Storage } from '~/types/storage.types';
 

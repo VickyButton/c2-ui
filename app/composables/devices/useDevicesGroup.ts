@@ -1,4 +1,4 @@
-import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/types/DevicesAPI.types';
+import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/types/devicesApi.types';
 import type { Device } from '~/types/devices.types';
 
 function toMap(devicesArray: Device[]) {

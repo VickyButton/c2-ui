@@ -1,4 +1,4 @@
-import type { GlobalMapConstructor } from '~/types/GlobalMap.types';
+import type { GlobalMapConstructor } from '~/types/globalMap.types';
 import type { GlobalCoordinates2D, GlobalMapOptions } from '~/types/map.types';
 
 const defaultOptions = {
