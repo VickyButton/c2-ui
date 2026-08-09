@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import type { AuthAPI_Auth } from '~/services/AuthAPI.types';
+import type { AuthAPI_Auth } from '~/types/AuthAPI.types';
 
 const emit = defineEmits<{
   (e: 'login', accessToken: string): void;

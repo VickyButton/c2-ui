@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/services/DevicesAPI.types';
+import type { DevicesAPI_GetDevice, DevicesAPI_GetDevices } from '~/types/DevicesAPI.types';
 
 const props = defineProps<{
   getDevices: DevicesAPI_GetDevices;
