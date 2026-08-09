@@ -1,5 +1,5 @@
 /**
- * This plugin injects dependencies for use across the application.
+ * This plugin acts as a provider for dependencies used across the application.
  */
 import { auth } from '~/services/AuthAPI';
 import { getDevice, getDevices } from '~/services/DevicesAPI';
