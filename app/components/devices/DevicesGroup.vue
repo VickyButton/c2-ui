@@ -1,14 +1,13 @@
 <template>
   <div class="flex flex-col gap-y-4">
     <p v-if="devices.length === 0">No devices registered.</p>
-    <section v-if="drones.length > 0" class="flex flex-col gap-y-2">
-      <h2>DRONES</h2>
+    <DevicesSection v-if="drones.length > 0" title="DRONES">
       <BaseGroup class="grid-cols-3">
         <BaseGroupItem v-for="drone in drones">
           <DroneInformationCard :drone @sync="syncDevice(drone.id)" />
         </BaseGroupItem>
       </BaseGroup>
-    </section>
+    </DevicesSection>
   </div>
 </template>
 
