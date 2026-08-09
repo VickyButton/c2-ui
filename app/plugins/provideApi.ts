@@ -1,5 +1,5 @@
 /*
-  This plugin acts as a provider for the based API used in the application.
+  This plugin acts as a provider for the base API used in the application.
 */
 import { APIFetch } from '~/services/APIFetch';
 
