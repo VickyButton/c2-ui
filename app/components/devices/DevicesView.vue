@@ -1,5 +1,8 @@
 <template>
-  <AppLayoutPage title="DEVICES">
+  <AppLayoutPage>
+    <AppLayoutPageHeader>
+      <AppLayoutPageTitle>DEVICES</AppLayoutPageTitle>
+    </AppLayoutPageHeader>
     <Devices :getDevices :getDevice />
   </AppLayoutPage>
 </template>

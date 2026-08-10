@@ -1,5 +1,8 @@
 <template>
-  <AppLayoutPage title="SETTINGS">
+  <AppLayoutPage>
+    <AppLayoutPageHeader>
+      <AppLayoutPageTitle>SETTINGS</AppLayoutPageTitle>
+    </AppLayoutPageHeader>
     <div class="flex flex-col w-full max-w-[400px]">
       <section>
         <SettingsFeatureFlagsCard v-if="showDevSettings" />

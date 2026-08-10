@@ -1,5 +1,8 @@
 <template>
-  <AppLayoutPage title="DEVICE">
+  <AppLayoutPage>
+    <AppLayoutPageHeader>
+      <AppLayoutPageTitle>DEVICE</AppLayoutPageTitle>
+    </AppLayoutPageHeader>
     <p>This is the Device detail page.</p>
   </AppLayoutPage>
 </template>
