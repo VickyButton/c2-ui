@@ -1,8 +1,20 @@
 <template>
   <AppLayoutPage>
     <AppLayoutPageHeader>
-      <AppLayoutPageTitle>REGISTER DEVICE</AppLayoutPageTitle>
+      <BaseBreadcrumbs :breadcrumbs />
     </AppLayoutPageHeader>
     <p>This is the device registration page.</p>
   </AppLayoutPage>
 </template>
+
+<script setup lang="ts">
+const breadcrumbs = [
+  {
+    label: 'DEVICES',
+    path: '/devices',
+  },
+  {
+    label: 'REGISTER DEVICE',
+  },
+];
+</script>
