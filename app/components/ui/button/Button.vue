@@ -1,5 +1,5 @@
 <template>
-  <button :type class="px-2 py-1 border">
+  <button :type class="flex flex-row justify-center items-center px-2 py-1 border">
     <slot />
   </button>
 </template>
