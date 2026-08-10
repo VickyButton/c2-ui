@@ -1,5 +1,15 @@
 <template>
   <nav class="flex flex-col bg-secondary-600">
+    <AppLayoutSidebarItemGroup class="border-b">
+      <header>
+          <NuxtLink to="/dashboard">
+            <div class="flex flex-row gap-x-2 p-2">
+              <BrandLogo size="sm" />
+              <h2>C2_UI</h2>
+            </div>
+          </NuxtLink>
+      </header>
+    </AppLayoutSidebarItemGroup>
     <AppLayoutSidebarItemGroup>
       <AppLayoutSidebarItem to="/dashboard" label="DASHBOARD">
         <AppLayoutSidebarItemIcon name="dashboard" />
