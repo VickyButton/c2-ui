@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { mountSuspended } from '@nuxt/test-utils/runtime';
-import DroneInformationCard from '../drone/informationCard/DroneInformationCard.vue';
+import DroneInformationCard from '../drone/information/DroneInformationCard.vue';
 import Devices from './Devices.vue';
 
 const getDevice = vi.fn();
