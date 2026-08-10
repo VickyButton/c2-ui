@@ -21,7 +21,11 @@ describe('Devices', () => {
     ]);
 
     const wrapper = await mountSuspended(Devices, {
-      shallow: true,
+      global: {
+        stubs: {
+          DroneInformationCard: true,
+        },
+      },
       props: {
         getDevice,
         getDevices,
