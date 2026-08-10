@@ -28,7 +28,9 @@
     </BaseCardContent>
     <BaseCardActions>
       <BaseCardAction>
-        <BaseButtonPrimary class="w-full" @click="view">VIEW</BaseButtonPrimary>
+        <NuxtLink :to="path">
+          <BaseButtonPrimary class="w-full">VIEW</BaseButtonPrimary>
+        </NuxtLink>
       </BaseCardAction>
       <BaseCardAction>
         <BaseButtonPrimary class="w-full" @click="sync">SYNC</BaseButtonPrimary>
@@ -41,7 +43,6 @@
 import type { Drone } from '~/types/devices.types';
 
 const emit = defineEmits<{
-  (e: 'view'): void;
   (e: 'sync'): void;
 }>();
 
@@ -50,10 +51,7 @@ const props = defineProps<{
 }>();
 
 const title = computed(() => useDeviceName(props.drone));
-
-function view() {
-  emit('view');
-}
+const path = computed(() => `/devices/${props.drone.id}`);
 
 function sync() {
   emit('sync');
