@@ -17,10 +17,7 @@
 </template>
 
 <script setup lang="ts">
-interface Breadcrumb {
-  label: string;
-  path?: string;
-}
+import type { Breadcrumb } from '~/types/breadcrumbs.types';
 
 const props = defineProps<{
   breadcrumbs: Breadcrumb[];

@@ -8,13 +8,9 @@
 </template>
 
 <script setup lang="ts">
-const breadcrumbs = [
-  {
-    label: 'DEVICES',
-    path: '/devices',
-  },
-  {
-    label: 'REGISTER DEVICE',
-  },
-];
+import type { Breadcrumb } from '~/types/breadcrumbs.types';
+
+defineProps<{
+  breadcrumbs: Breadcrumb[];
+}>();
 </script>
