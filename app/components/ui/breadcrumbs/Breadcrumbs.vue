@@ -3,7 +3,7 @@
     <ol class="flex flex-row gap-x-2">
       <li v-for="(breadcrumb, index) in breadcrumbs" :aria-current="isCurrentPage(index) ? 'page' : undefined" class="flex flex-row gap-x-2">
         <div class="flex flex-row items-center gap-x-2">
-          <h1 v-if="isCurrentPage(index)" class="font-bold">{{ breadcrumb.label }}</h1>
+          <h1 v-if="isCurrentPage(index)">{{ breadcrumb.label }}</h1>
           <template v-else>
             <NuxtLink tabindex="0" :to="breadcrumb.path" class="text-2xl" :class="{
               'hover:underline': breadcrumb.path !== undefined
