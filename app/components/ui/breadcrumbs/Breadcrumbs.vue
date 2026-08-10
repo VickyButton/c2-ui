@@ -5,7 +5,7 @@
         <div class="flex flex-row items-center gap-x-2">
           <h1 v-if="isCurrentPage(index)">{{ breadcrumb.label }}</h1>
           <template v-else>
-            <NuxtLink tabindex="0" :to="breadcrumb.path" class="text-2xl" :class="{
+            <NuxtLink tabindex="0" :to="breadcrumb.path" class="text-2xl text-primary-700" :class="{
               'hover:underline': breadcrumb.path !== undefined
               }">{{ breadcrumb.label }}</NuxtLink>
             <BaseIcon name="arrow-right" size="xs" />
