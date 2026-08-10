@@ -3,7 +3,7 @@ export default {
     extend: {
       colors: {
         primary: {
-          900: 'rgb(255, 255, 255)',
+          800: 'rgb(255, 255, 255)',
         },
         secondary: {
           200: 'rgb(198 209 236)',
