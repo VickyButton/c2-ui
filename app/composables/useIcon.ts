@@ -1,5 +1,9 @@
 const ICONS_PATH = '/icons';
 const icons = {
+  'arrow-right': {
+    src: `${ICONS_PATH}/arrow-right.png`,
+    alt: 'An arrow pointing to the right.',
+  },
   'battery-empty': {
     src: `${ICONS_PATH}/battery-empty.png`,
     alt: 'An empty battery with no energy bars.',
