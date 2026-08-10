@@ -2,10 +2,12 @@
   <AppLayoutPage>
     <AppLayoutPageHeader>
       <AppLayoutPageTitle>DEVICES</AppLayoutPageTitle>
-      <BaseButtonPrimary class="gap-x-1 ml-auto">
-        <BaseIcon size="xs" name="plus" />
-        REGISTER DEVICE
-      </BaseButtonPrimary>
+      <NuxtLink to="/devices/register" class="ml-auto">
+        <BaseButtonPrimary class="gap-x-1">
+          <BaseIcon size="xs" name="plus" />
+          REGISTER DEVICE
+        </BaseButtonPrimary>
+      </NuxtLink>
     </AppLayoutPageHeader>
     <Devices :getDevices :getDevice />
   </AppLayoutPage>
