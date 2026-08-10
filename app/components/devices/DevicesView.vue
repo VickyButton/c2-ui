@@ -4,7 +4,7 @@
       <AppLayoutPageTitle>DEVICES</AppLayoutPageTitle>
       <BaseButtonPrimary class="gap-x-1 ml-auto">
         <BaseIcon size="xs" name="plus" />
-        ADD DEVICE
+        REGISTER DEVICE
       </BaseButtonPrimary>
     </AppLayoutPageHeader>
     <Devices :getDevices :getDevice />
