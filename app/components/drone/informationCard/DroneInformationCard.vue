@@ -24,7 +24,7 @@
           </div>
         </dl>
       </div>
-      <DronePositionMap :droneId="drone.id" :droneCoordinates="drone.coordinates" class="h-60 border bg-white" />
+      <DronePositionMap :droneId="drone.id" :droneCoordinates="drone.coordinates" class="h-60 border bg-primary-500" />
     </BaseCardContent>
     <BaseCardActions>
       <BaseCardAction>
