@@ -22,7 +22,7 @@ function onLogin(accessToken: string) {
   // Set access token.
   setAccessToken(accessToken);
 
-  // Navigate to dashboard.
-  navigateTo('/dashboard');
+  // Navigate home.
+  navigateTo('/');
 }
 </script>
