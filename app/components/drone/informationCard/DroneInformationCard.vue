@@ -49,7 +49,7 @@ const props = defineProps<{
   drone: Drone;
 }>();
 
-const title = computed(() => props.drone.nickname ?? `DRONE ${props.drone.id}`);
+const title = computed(() => useDeviceName(props.drone));
 
 function view() {
   emit('view');
