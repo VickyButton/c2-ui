@@ -43,29 +43,36 @@ export class GlobalMapOL implements GlobalMap {
     // Allows GPS coordinates to be used.
     useGeographic();
 
+    // Define map tiles source.
+    const source = new XYZ({
+      url: 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+    });
+
+    // Define map layer.
+    const layer = new TileLayer({
+      source,
+    });
+
+    // Define map view.
+    const view = new View({
+      center: [0, 0],
+      zoom: 16,
+      minZoom: options?.minZoom,
+      maxZoom: options?.maxZoom,
+    });
+
     // Initialize map and mount to container.
     this._map = new MapOL({
       target: containerId,
-      layers: [
-        new TileLayer({
-          source: new XYZ({
-            url: 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-          }),
-        }),
-      ],
-      view: new View({
-        center: [0, 0],
-        zoom: 16,
-        minZoom: options?.minZoom,
-        maxZoom: options?.maxZoom,
-      }),
+      layers: [layer],
+      view,
       controls: [],
     });
 
     // Create vector layer for markers.
-    const source = new Vector();
+    const markerSource = new Vector();
     const markerLayer = new VectorLayer({
-      source,
+      source: markerSource,
     });
 
     // Add vector layer to map.
