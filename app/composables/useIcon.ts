@@ -44,13 +44,25 @@ const icons = {
     src: `${ICONS_PATH}/flag.png`,
     alt: 'A triangular flag hoisted on a flagpole.',
   },
+  globe: {
+    src: `${ICONS_PATH}/globe.png`,
+    alt: 'A globe.',
+  },
   home: {
     src: `${ICONS_PATH}/home.png`,
     alt: 'A house with a roof and a door.',
   },
+  layers: {
+    src: `${ICONS_PATH}/layers.png`,
+    alt: 'Three sheets layered on top of one another.',
+  },
   logo: {
     src: `${ICONS_PATH}/logo.png`,
     alt: 'The letter "C" with a 2 enveloped within it.',
+  },
+  map: {
+    src: `${ICONS_PATH}/map.png`,
+    alt: 'A paper map',
   },
   minus: {
     src: `${ICONS_PATH}/minus.png`,
