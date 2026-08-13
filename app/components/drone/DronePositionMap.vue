@@ -16,7 +16,10 @@ const GlobalMap = inject(GLOBAL_MAP_CONSTRUCTOR_INJECTION_KEY);
 
 invariant(GlobalMap !== undefined, 'GlobalMap constructor is not provided.');
 
+const runtimeConfig = useRuntimeConfig(); // TODO: Abstract config injection.
 const map = useGlobalMap(GlobalMap, {
+  mapTilesDefaultApiUrl: runtimeConfig.public.mapTilesDefaultApiUrl,
+  mapTilesSatteliteApiUrl: runtimeConfig.public.mapTilesSatteliteApiUrl,
   minZoom: 0,
   maxZoom: 20,
 });

@@ -1,6 +1,6 @@
 import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions } from '~/types/globalMap.types';
 import { Feature, Map as MapOL, View } from 'ol';
-import { Vector, XYZ } from 'ol/source';
+import { TileJSON, Vector, XYZ } from 'ol/source';
 import { useGeographic } from 'ol/proj';
 import TileLayer from 'ol/layer/Tile';
 import { Point } from 'ol/geom';
@@ -14,6 +14,8 @@ import Stroke from 'ol/style/Stroke';
 export class GlobalMapOL implements GlobalMap {
   private _map?: MapOL;
   private _markerLayer?: VectorLayer;
+  private _mapTilesDefaultLayer?: TileLayer;
+  private _mapTilesSatteliteLayer?: TileLayer;
 
   private get map() {
     invariant(this._map !== undefined, 'Map is not defined.');
@@ -31,6 +33,18 @@ export class GlobalMapOL implements GlobalMap {
     return this._markerLayer;
   }
 
+  private get mapTilesDefaultLayer() {
+    invariant(this._mapTilesDefaultLayer !== undefined, 'Map tiles default layer is not defined.');
+
+    return this._mapTilesDefaultLayer;
+  }
+
+  private get mapTilesSatteliteLayer() {
+    invariant(this._mapTilesSatteliteLayer !== undefined, 'Map tiles sattelite layer is not defined.');
+
+    return this._mapTilesSatteliteLayer;
+  }
+
   public get zoom() {
     const value = this.view.getZoom();
 
@@ -39,32 +53,35 @@ export class GlobalMapOL implements GlobalMap {
     return value;
   }
 
-  public load(containerId: string, options?: GlobalMapOptions) {
+  public load(containerId: string, options: GlobalMapOptions) {
     // Allows GPS coordinates to be used.
     useGeographic();
 
-    // Define map tiles source.
-    const source = new XYZ({
-      url: 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-    });
+    // Define map tiles sources.
+    const mapTilesDefaultSource = this.createMapTilesDefaultSource(options.mapTilesDefaultApiUrl);
+    const mapTilesSatteliteSource = this.createMapTilesSatteliteSource(options.mapTilesSatteliteApiUrl);
 
-    // Define map layer.
-    const layer = new TileLayer({
-      source,
+    // Define map tiles layers.
+    this._mapTilesDefaultLayer = new TileLayer({
+      source: mapTilesDefaultSource,
+    });
+    this._mapTilesSatteliteLayer = new TileLayer({
+      source: mapTilesSatteliteSource,
+      visible: false,
     });
 
     // Define map view.
     const view = new View({
       center: [0, 0],
       zoom: 16,
-      minZoom: options?.minZoom,
-      maxZoom: options?.maxZoom,
+      minZoom: options.minZoom,
+      maxZoom: options.maxZoom,
     });
 
     // Initialize map and mount to container.
     this._map = new MapOL({
       target: containerId,
-      layers: [layer],
+      layers: [this.mapTilesDefaultLayer, this.mapTilesSatteliteLayer],
       view,
       controls: [],
     });
@@ -82,12 +99,42 @@ export class GlobalMapOL implements GlobalMap {
     this._markerLayer = markerLayer;
   }
 
+  private createMapTilesDefaultSource(url: string) {
+    return new XYZ({
+      url,
+    });
+  }
+
+  private createMapTilesSatteliteSource(url: string) {
+    return new TileJSON({
+      url,
+      tileSize: 256,
+      crossOrigin: 'anonymous',
+    });
+  }
+
   public setCenter({ latitude, longitude }: GlobalCoordinates2D) {
     this.view.setCenter([latitude, longitude]);
   }
 
   public setZoom(value: number) {
     this.view.setZoom(value);
+  }
+
+  public showDefaultMapTilesLayer() {
+    this.mapTilesDefaultLayer.setVisible(true);
+  }
+
+  public hideDefaultMapTilesLayer() {
+    this.mapTilesDefaultLayer.setVisible(false);
+  }
+
+  public showSatteliteMapTilesLayer() {
+    this.mapTilesSatteliteLayer.setVisible(true);
+  }
+
+  public hideSatteliteMapTilesLayer() {
+    this.mapTilesSatteliteLayer.setVisible(false);
   }
 
   public addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {

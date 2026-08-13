@@ -5,7 +5,7 @@ const defaultOptions = {
   maxZoom: 20,
 };
 
-export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Partial<GlobalMapOptions>) {
+export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions: GlobalMapOptions) {
   const options = {
     ...defaultOptions,
     ...mapOptions,
@@ -40,6 +40,22 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Parti
     map.setZoom(newValue);
   }
 
+  function useDefaultMapTilesLayer() {
+    // Hide non-default map tiles layers.
+    map.hideSatteliteMapTilesLayer();
+
+    // Show default map tiles layer.
+    map.showDefaultMapTilesLayer();
+  }
+
+  function useSatteliteMapTilesLayer() {
+    // Hide non-sattelite map tiles layers.
+    map.hideDefaultMapTilesLayer();
+
+    // Show sattelite map tiles layer.
+    map.showSatteliteMapTilesLayer();
+  }
+
   function addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
     map.addIconMarker(id, src, coordinates);
   }
@@ -54,6 +70,8 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions?: Parti
     setZoom,
     zoomIn,
     zoomOut,
+    useDefaultMapTilesLayer,
+    useSatteliteMapTilesLayer,
     addIconMarker,
     removeIconMarker,
   };
