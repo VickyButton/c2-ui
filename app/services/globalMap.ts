@@ -137,10 +137,11 @@ export class GlobalMapOL implements GlobalMap {
   public addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
     const circle = this.createCircleFeature(coordinates, 20);
     const icon = this.createIconFeature(coordinates, src);
+    const [circleId, iconId] = this.getIconMarkerIds(id);
 
     // Set IDs for features.
-    circle.setId(`${id}-circle`);
-    icon.setId(`${id}-icon`);
+    circle.setId(circleId);
+    icon.setId(iconId);
 
     // Retrieve vector source
     const source = this.markerLayer.getSource();
@@ -189,6 +190,10 @@ export class GlobalMapOL implements GlobalMap {
     return feature;
   }
 
+  private getIconMarkerIds(id: string): [string, string] {
+    return [`${id}-circle`, `${id}-icon`];
+  }
+
   public removeIconMarker(id: string) {
     // Retrieve vector source
     const source = this.markerLayer.getSource();
@@ -197,8 +202,9 @@ export class GlobalMapOL implements GlobalMap {
     invariant(source !== null, 'Marker layer vector source is not defined.');
 
     // Retrieve features.
-    const circle = source.getFeatureById(`${id}-circle`);
-    const icon = source.getFeatureById(`${id}-icon`);
+    const [circleId, iconId] = this.getIconMarkerIds(id);
+    const circle = source.getFeatureById(circleId);
+    const icon = source.getFeatureById(iconId);
 
     // Add features to vector source.
     source.removeFeatures([circle, icon]);
