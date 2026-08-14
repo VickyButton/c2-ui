@@ -57,18 +57,9 @@ export class GlobalMapOL implements GlobalMap {
     // Allows GPS coordinates to be used.
     useGeographic();
 
-    // Define map tiles sources.
-    const mapTilesDefaultSource = this.createMapTilesDefaultSource(options.mapTilesDefaultApiUrl);
-    const mapTilesSatteliteSource = this.createMapTilesSatteliteSource(options.mapTilesSatteliteApiUrl);
-
     // Define map tiles layers.
-    this._mapTilesDefaultLayer = new TileLayer({
-      source: mapTilesDefaultSource,
-    });
-    this._mapTilesSatteliteLayer = new TileLayer({
-      source: mapTilesSatteliteSource,
-      visible: false,
-    });
+    this._mapTilesDefaultLayer = this.createMapTilesDefaultLayer(options.mapTilesDefaultApiUrl);
+    this._mapTilesSatteliteLayer = this.createMapTilesSatteliteLayer(options.mapTilesSatteliteApiUrl);
 
     // Define map view.
     const view = new View({
@@ -99,17 +90,26 @@ export class GlobalMapOL implements GlobalMap {
     this._markerLayer = markerLayer;
   }
 
-  private createMapTilesDefaultSource(url: string) {
-    return new XYZ({
+  private createMapTilesDefaultLayer(url: string) {
+    const source = new XYZ({
       url,
+    });
+
+    return new TileLayer({
+      source,
     });
   }
 
-  private createMapTilesSatteliteSource(url: string) {
-    return new TileJSON({
+  private createMapTilesSatteliteLayer(url: string) {
+    const source = new TileJSON({
       url,
       tileSize: 256,
       crossOrigin: 'anonymous',
+    });
+
+    return new TileLayer({
+      source,
+      visible: false,
     });
   }
 
