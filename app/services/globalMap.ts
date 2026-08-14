@@ -57,9 +57,10 @@ export class GlobalMapOL implements GlobalMap {
     // Allows GPS coordinates to be used.
     useGeographic();
 
-    // Define map tiles layers.
+    // Define map layers.
     this._mapTilesDefaultLayer = this.createMapTilesDefaultLayer(options.mapTilesDefaultApiUrl);
     this._mapTilesSatteliteLayer = this.createMapTilesSatteliteLayer(options.mapTilesSatteliteApiUrl);
+    this._markerLayer = this.createMarkerLayer();
 
     // Define map view.
     const view = new View({
@@ -72,22 +73,10 @@ export class GlobalMapOL implements GlobalMap {
     // Initialize map and mount to container.
     this._map = new MapOL({
       target: containerId,
-      layers: [this.mapTilesDefaultLayer, this.mapTilesSatteliteLayer],
+      layers: [this.mapTilesDefaultLayer, this.mapTilesSatteliteLayer, this.markerLayer],
       view,
       controls: [],
     });
-
-    // Create vector layer for markers.
-    const markerSource = new Vector();
-    const markerLayer = new VectorLayer({
-      source: markerSource,
-    });
-
-    // Add vector layer to map.
-    this.map.addLayer(markerLayer);
-
-    // Save reference to layer for use later.
-    this._markerLayer = markerLayer;
   }
 
   private createMapTilesDefaultLayer(url: string) {
@@ -110,6 +99,14 @@ export class GlobalMapOL implements GlobalMap {
     return new TileLayer({
       source,
       visible: false,
+    });
+  }
+
+  private createMarkerLayer() {
+    const source = new Vector();
+
+    return new VectorLayer({
+      source,
     });
   }
 
