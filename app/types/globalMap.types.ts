@@ -19,6 +19,14 @@ export interface GlobalMap {
   setCenter(value: GlobalCoordinates2D): void;
   /** Sets the current zoom level at which the map is viewed at. */
   setZoom(value: number): void;
+  /** Shows the default map tiles layer. */
+  showDefaultMapTilesLayer(): void;
+  /** Hides the default map tiles layer. */
+  hideDefaultMapTilesLayer(): void;
+  /** Shows the satellite map tiles layer. */
+  showSatelliteMapTilesLayer(): void;
+  /** Shows the satellite map tiles layer. */
+  hideSatelliteMapTilesLayer(): void;
   /** Adds an icon marker at specified coordinates. */
   addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D): void;
   /** Removes an icon marker. */
@@ -26,6 +34,8 @@ export interface GlobalMap {
 }
 
 export interface GlobalMapOptions {
+  mapTilesDefaultApiUrl: string;
+  mapTilesSatelliteApiUrl: string;
   maxZoom: number;
   minZoom: number;
 }

@@ -1,6 +1,6 @@
 import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions } from '~/types/globalMap.types';
 import { Feature, Map as MapOL, View } from 'ol';
-import { Vector, XYZ } from 'ol/source';
+import { TileJSON, Vector, XYZ } from 'ol/source';
 import { useGeographic } from 'ol/proj';
 import TileLayer from 'ol/layer/Tile';
 import { Point } from 'ol/geom';
@@ -14,6 +14,8 @@ import Stroke from 'ol/style/Stroke';
 export class GlobalMapOL implements GlobalMap {
   private _map?: MapOL;
   private _markerLayer?: VectorLayer;
+  private _mapTilesDefaultLayer?: TileLayer;
+  private _mapTilesSatelliteLayer?: TileLayer;
 
   private get map() {
     invariant(this._map !== undefined, 'Map is not defined.');
@@ -31,6 +33,18 @@ export class GlobalMapOL implements GlobalMap {
     return this._markerLayer;
   }
 
+  private get mapTilesDefaultLayer() {
+    invariant(this._mapTilesDefaultLayer !== undefined, 'Map tiles default layer is not defined.');
+
+    return this._mapTilesDefaultLayer;
+  }
+
+  private get mapTilesSatelliteLayer() {
+    invariant(this._mapTilesSatelliteLayer !== undefined, 'Map tiles satellite layer is not defined.');
+
+    return this._mapTilesSatelliteLayer;
+  }
+
   public get zoom() {
     const value = this.view.getZoom();
 
@@ -39,47 +53,61 @@ export class GlobalMapOL implements GlobalMap {
     return value;
   }
 
-  public load(containerId: string, options?: GlobalMapOptions) {
+  public load(containerId: string, options: GlobalMapOptions) {
     // Allows GPS coordinates to be used.
     useGeographic();
 
-    // Define map tiles source.
-    const source = new XYZ({
-      url: 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-    });
-
-    // Define map layer.
-    const layer = new TileLayer({
-      source,
-    });
+    // Define map layers.
+    this._mapTilesDefaultLayer = this.createMapTilesDefaultLayer(options.mapTilesDefaultApiUrl);
+    this._mapTilesSatelliteLayer = this.createMapTilesSatelliteLayer(options.mapTilesSatelliteApiUrl);
+    this._markerLayer = this.createMarkerLayer();
 
     // Define map view.
     const view = new View({
       center: [0, 0],
       zoom: 16,
-      minZoom: options?.minZoom,
-      maxZoom: options?.maxZoom,
+      minZoom: options.minZoom,
+      maxZoom: options.maxZoom,
     });
 
     // Initialize map and mount to container.
     this._map = new MapOL({
       target: containerId,
-      layers: [layer],
+      layers: [this.mapTilesDefaultLayer, this.mapTilesSatelliteLayer, this.markerLayer],
       view,
       controls: [],
     });
+  }
 
-    // Create vector layer for markers.
-    const markerSource = new Vector();
-    const markerLayer = new VectorLayer({
-      source: markerSource,
+  private createMapTilesDefaultLayer(url: string) {
+    const source = new XYZ({
+      url,
     });
 
-    // Add vector layer to map.
-    this.map.addLayer(markerLayer);
+    return new TileLayer({
+      source,
+    });
+  }
 
-    // Save reference to layer for use later.
-    this._markerLayer = markerLayer;
+  private createMapTilesSatelliteLayer(url: string) {
+    const source = new TileJSON({
+      url,
+      tileSize: 256,
+      crossOrigin: 'anonymous',
+    });
+
+    return new TileLayer({
+      source,
+      visible: false,
+    });
+  }
+
+  private createMarkerLayer() {
+    const source = new Vector();
+
+    return new VectorLayer({
+      source,
+    });
   }
 
   public setCenter({ latitude, longitude }: GlobalCoordinates2D) {
@@ -90,13 +118,30 @@ export class GlobalMapOL implements GlobalMap {
     this.view.setZoom(value);
   }
 
+  public showDefaultMapTilesLayer() {
+    this.mapTilesDefaultLayer.setVisible(true);
+  }
+
+  public hideDefaultMapTilesLayer() {
+    this.mapTilesDefaultLayer.setVisible(false);
+  }
+
+  public showSatelliteMapTilesLayer() {
+    this.mapTilesSatelliteLayer.setVisible(true);
+  }
+
+  public hideSatelliteMapTilesLayer() {
+    this.mapTilesSatelliteLayer.setVisible(false);
+  }
+
   public addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
     const circle = this.createCircleFeature(coordinates, 20);
-    const icon = this.createIconFeature(coordinates, 'icons/drone.png');
+    const icon = this.createIconFeature(coordinates, src);
+    const [circleId, iconId] = this.getIconMarkerIds(id);
 
     // Set IDs for features.
-    circle.setId(`${id}-circle`);
-    icon.setId(`${id}-icon`);
+    circle.setId(circleId);
+    icon.setId(iconId);
 
     // Retrieve vector source
     const source = this.markerLayer.getSource();
@@ -145,6 +190,10 @@ export class GlobalMapOL implements GlobalMap {
     return feature;
   }
 
+  private getIconMarkerIds(id: string): [string, string] {
+    return [`${id}-circle`, `${id}-icon`];
+  }
+
   public removeIconMarker(id: string) {
     // Retrieve vector source
     const source = this.markerLayer.getSource();
@@ -153,8 +202,9 @@ export class GlobalMapOL implements GlobalMap {
     invariant(source !== null, 'Marker layer vector source is not defined.');
 
     // Retrieve features.
-    const circle = source.getFeatureById(`${id}-circle`);
-    const icon = source.getFeatureById(`${id}-icon`);
+    const [circleId, iconId] = this.getIconMarkerIds(id);
+    const circle = source.getFeatureById(circleId);
+    const icon = source.getFeatureById(iconId);
 
     // Add features to vector source.
     source.removeFeatures([circle, icon]);
