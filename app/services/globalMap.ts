@@ -136,7 +136,7 @@ export class GlobalMapOL implements GlobalMap {
 
   public addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
     // Create feature for icon marker.
-    const iconMarkerFeature = this.createIconMarkerFeature(coordinates, src);
+    const iconMarkerFeature = this.createIconMarkerFeature(coordinates, src, 'rgba(46, 71, 170, 0.4)', 'rgb(255, 255, 255)');
 
     // Give feature a unique ID.
     iconMarkerFeature.setId(id);
@@ -151,9 +151,9 @@ export class GlobalMapOL implements GlobalMap {
     source.addFeature(iconMarkerFeature);
   }
 
-  private createIconMarkerFeature(center: GlobalCoordinates2D, src: string) {
+  private createIconMarkerFeature(center: GlobalCoordinates2D, src: string, fillColor: string, strokeColor: string) {
     const geometry = new Point([center.latitude, center.longitude]);
-    const circleStyle = this.createCircleStyle(20);
+    const circleStyle = this.createCircleStyle(20, fillColor, strokeColor);
     const iconStyle = this.createIconStyle(src);
     const feature = new Feature({
       geometry,
@@ -164,15 +164,15 @@ export class GlobalMapOL implements GlobalMap {
     return feature;
   }
 
-  private createCircleStyle(radius: number) {
+  private createCircleStyle(radius: number, fillColor: string, strokeColor: string) {
     return new Style({
       image: new CircleStyle({
         radius,
         fill: new Fill({
-          color: 'rgba(46, 71, 170, 0.4)',
+          color: fillColor,
         }),
         stroke: new Stroke({
-          color: 'rgb(255, 255, 255)',
+          color: strokeColor,
         }),
       }),
     });
