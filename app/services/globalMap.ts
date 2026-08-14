@@ -136,7 +136,7 @@ export class GlobalMapOL implements GlobalMap {
 
   public addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
     const circle = this.createCircleFeature(coordinates, 20);
-    const icon = this.createIconFeature(coordinates, 'icons/drone.png');
+    const icon = this.createIconFeature(coordinates, src);
 
     // Set IDs for features.
     circle.setId(`${id}-circle`);
