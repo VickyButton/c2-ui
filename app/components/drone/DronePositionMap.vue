@@ -13,13 +13,14 @@ const props = defineProps<{
 const containerId = computed(() => `drone-position-map-${props.droneId}`);
 
 const GlobalMap = inject(GLOBAL_MAP_CONSTRUCTOR_INJECTION_KEY);
+const config = inject(CONFIG_INJECTION_KEY);
 
 invariant(GlobalMap !== undefined, 'GlobalMap constructor is not provided.');
+invariant(config !== undefined, 'Config is not provided.');
 
-const runtimeConfig = useRuntimeConfig(); // TODO: Abstract config injection.
 const map = useGlobalMap(GlobalMap, {
-  mapTilesDefaultApiUrl: runtimeConfig.public.mapTilesDefaultApiUrl,
-  mapTilesSatteliteApiUrl: runtimeConfig.public.mapTilesSatteliteApiUrl,
+  mapTilesDefaultApiUrl: config.mapTilesDefaultApiUrl,
+  mapTilesSatteliteApiUrl: config.mapTilesSatteliteApiUrl,
   minZoom: 0,
   maxZoom: 20,
 });
