@@ -1,6 +1,9 @@
 <template>
   <div role="application" class="relative">
-    <GlobalMapControls :showLayersControls :showZoomControls class="absolute top-0 z-10 w-full h-full" @zoomIn="zoomIn" @zoomOut="zoomOut" @useDefaultLayer="useDefaultLayer" @useSatteliteLayer="useSatteliteLayer" />
+    <GlobalMapControls class="absolute z-10 w-full h-full">
+      <GlobalMapControlsLayers @useDefaultLayer="useDefaultLayer" @useSatteliteLayer="useSatteliteLayer" />
+      <GlobalMapControlsZoom @zoomIn="zoomIn" @zoomOut="zoomOut" />
+    </GlobalMapControls>
   </div>
 </template>
 
