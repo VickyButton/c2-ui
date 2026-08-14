@@ -135,44 +135,37 @@ export class GlobalMapOL implements GlobalMap {
   }
 
   public addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
-    const circle = this.createCircleFeature(coordinates, 20);
-    const icon = this.createIconFeature(coordinates, src);
-    const [circleId, iconId] = this.getIconMarkerIds(id);
+    // Create feature for icon marker.
+    const iconMarkerFeature = this.createIconMarkerFeature(coordinates, src);
 
-    // Set IDs for features.
-    circle.setId(circleId);
-    icon.setId(iconId);
+    // Give feature a unique ID.
+    iconMarkerFeature.setId(id);
 
-    // Retrieve vector source
+    // Retrieve vector source where feature will be added.
     const source = this.markerLayer.getSource();
 
-    // Assert that source is defined.
+    // Assert that vector source is defined.
     invariant(source !== null, 'Marker layer vector source is not defined.');
 
-    // Add features to vector source.
-    source.addFeatures([circle, icon]);
+    // Add feature to vector source.
+    source.addFeature(iconMarkerFeature);
   }
 
-  private createIconFeature(center: GlobalCoordinates2D, src: string) {
-    const feature = new Feature();
+  private createIconMarkerFeature(center: GlobalCoordinates2D, src: string) {
     const geometry = new Point([center.latitude, center.longitude]);
-    const style = new Style({
-      image: new Icon({
-        src,
-        scale: 0.5,
-      }),
+    const circleStyle = this.createCircleStyle(20);
+    const iconStyle = this.createIconStyle(src);
+    const feature = new Feature({
+      geometry,
     });
 
-    feature.setGeometry(geometry);
-    feature.setStyle(style);
+    feature.setStyle([circleStyle, iconStyle]);
 
     return feature;
   }
 
-  private createCircleFeature(center: GlobalCoordinates2D, radius: number) {
-    const feature = new Feature();
-    const geometry = new Point([center.latitude, center.longitude]);
-    const style = new Style({
+  private createCircleStyle(radius: number) {
+    return new Style({
       image: new CircleStyle({
         radius,
         fill: new Fill({
@@ -183,30 +176,28 @@ export class GlobalMapOL implements GlobalMap {
         }),
       }),
     });
-
-    feature.setGeometry(geometry);
-    feature.setStyle(style);
-
-    return feature;
   }
 
-  private getIconMarkerIds(id: string): [string, string] {
-    return [`${id}-circle`, `${id}-icon`];
+  private createIconStyle(src: string) {
+    return new Style({
+      image: new Icon({
+        src,
+        scale: 0.5,
+      }),
+    });
   }
 
   public removeIconMarker(id: string) {
-    // Retrieve vector source
+    // Retrieve vector source.
     const source = this.markerLayer.getSource();
 
     // Assert that source is defined.
     invariant(source !== null, 'Marker layer vector source is not defined.');
 
-    // Retrieve features.
-    const [circleId, iconId] = this.getIconMarkerIds(id);
-    const circle = source.getFeatureById(circleId);
-    const icon = source.getFeatureById(iconId);
+    // Retrieve icon marker feature.
+    const feature = source.getFeatureById(id);
 
     // Add features to vector source.
-    source.removeFeatures([circle, icon]);
+    source.removeFeature(feature);
   }
 }
