@@ -134,9 +134,9 @@ export class GlobalMapOL implements GlobalMap {
     this.mapTilesSatelliteLayer.setVisible(false);
   }
 
-  public addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
+  public addIconMarker(id: string, src: string, center: GlobalCoordinates2D) {
     // Create feature for icon marker.
-    const iconMarkerFeature = this.createIconMarkerFeature(coordinates, src, 'rgba(46, 71, 170, 0.4)', 'rgb(255, 255, 255)');
+    const iconMarkerFeature = this.createIconMarkerFeature(center, src, 'rgba(46, 71, 170, 0.4)', 'rgb(255, 255, 255)');
 
     // Give feature a unique ID.
     iconMarkerFeature.setId(id);

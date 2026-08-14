@@ -28,7 +28,7 @@ export interface GlobalMap {
   /** Shows the satellite map tiles layer. */
   hideSatelliteMapTilesLayer(): void;
   /** Adds an icon marker at specified coordinates. */
-  addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D): void;
+  addIconMarker(id: string, src: string, center: GlobalCoordinates2D): void;
   /** Removes an icon marker. */
   removeIconMarker(id: string): void;
 }
