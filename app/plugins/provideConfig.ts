@@ -6,7 +6,7 @@ export default defineNuxtPlugin({
     vueApp.provide(CONFIG_INJECTION_KEY, {
       apiBaseUrl: runtimeConfig.public.apiBaseUrl,
       mapTilesDefaultApiUrl: runtimeConfig.public.mapTilesDefaultApiUrl,
-      mapTilesSatteliteApiUrl: runtimeConfig.public.mapTilesSatteliteApiUrl,
+      mapTilesSatelliteApiUrl: runtimeConfig.public.mapTilesSatelliteApiUrl,
     });
   },
 });

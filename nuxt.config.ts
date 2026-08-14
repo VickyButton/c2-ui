@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     public: {
       apiBaseUrl: '',
       mapTilesDefaultApiUrl: '',
-      mapTilesSatteliteApiUrl: '',
+      mapTilesSatelliteApiUrl: '',
     },
   },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/test-utils/module'],

@@ -15,7 +15,7 @@ export class GlobalMapOL implements GlobalMap {
   private _map?: MapOL;
   private _markerLayer?: VectorLayer;
   private _mapTilesDefaultLayer?: TileLayer;
-  private _mapTilesSatteliteLayer?: TileLayer;
+  private _mapTilesSatelliteLayer?: TileLayer;
 
   private get map() {
     invariant(this._map !== undefined, 'Map is not defined.');
@@ -39,10 +39,10 @@ export class GlobalMapOL implements GlobalMap {
     return this._mapTilesDefaultLayer;
   }
 
-  private get mapTilesSatteliteLayer() {
-    invariant(this._mapTilesSatteliteLayer !== undefined, 'Map tiles sattelite layer is not defined.');
+  private get mapTilesSatelliteLayer() {
+    invariant(this._mapTilesSatelliteLayer !== undefined, 'Map tiles satellite layer is not defined.');
 
-    return this._mapTilesSatteliteLayer;
+    return this._mapTilesSatelliteLayer;
   }
 
   public get zoom() {
@@ -59,7 +59,7 @@ export class GlobalMapOL implements GlobalMap {
 
     // Define map layers.
     this._mapTilesDefaultLayer = this.createMapTilesDefaultLayer(options.mapTilesDefaultApiUrl);
-    this._mapTilesSatteliteLayer = this.createMapTilesSatteliteLayer(options.mapTilesSatteliteApiUrl);
+    this._mapTilesSatelliteLayer = this.createMapTilesSatelliteLayer(options.mapTilesSatelliteApiUrl);
     this._markerLayer = this.createMarkerLayer();
 
     // Define map view.
@@ -73,7 +73,7 @@ export class GlobalMapOL implements GlobalMap {
     // Initialize map and mount to container.
     this._map = new MapOL({
       target: containerId,
-      layers: [this.mapTilesDefaultLayer, this.mapTilesSatteliteLayer, this.markerLayer],
+      layers: [this.mapTilesDefaultLayer, this.mapTilesSatelliteLayer, this.markerLayer],
       view,
       controls: [],
     });
@@ -89,7 +89,7 @@ export class GlobalMapOL implements GlobalMap {
     });
   }
 
-  private createMapTilesSatteliteLayer(url: string) {
+  private createMapTilesSatelliteLayer(url: string) {
     const source = new TileJSON({
       url,
       tileSize: 256,
@@ -126,12 +126,12 @@ export class GlobalMapOL implements GlobalMap {
     this.mapTilesDefaultLayer.setVisible(false);
   }
 
-  public showSatteliteMapTilesLayer() {
-    this.mapTilesSatteliteLayer.setVisible(true);
+  public showSatelliteMapTilesLayer() {
+    this.mapTilesSatelliteLayer.setVisible(true);
   }
 
-  public hideSatteliteMapTilesLayer() {
-    this.mapTilesSatteliteLayer.setVisible(false);
+  public hideSatelliteMapTilesLayer() {
+    this.mapTilesSatelliteLayer.setVisible(false);
   }
 
   public addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {

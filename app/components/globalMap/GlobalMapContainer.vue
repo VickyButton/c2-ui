@@ -1,7 +1,7 @@
 <template>
   <div role="application" class="relative">
     <GlobalMapControls class="absolute z-10 w-full h-full">
-      <GlobalMapControlsLayers @useDefaultLayer="useDefaultLayer" @useSatteliteLayer="useSatteliteLayer" />
+      <GlobalMapControlsLayers @useDefaultLayer="useDefaultLayer" @useSatelliteLayer="useSatelliteLayer" />
       <GlobalMapControlsZoom @zoomIn="zoomIn" @zoomOut="zoomOut" />
     </GlobalMapControls>
   </div>
@@ -12,7 +12,7 @@ const emit = defineEmits<{
   (e: 'zoom-in'): void;
   (e: 'zoom-out'): void;
   (e: 'use-default-layer'): void;
-  (e: 'use-sattelite-layer'): void;
+  (e: 'use-satellite-layer'): void;
 }>();
 
 withDefaults(defineProps<{
@@ -35,7 +35,7 @@ function useDefaultLayer() {
   emit('use-default-layer');
 }
 
-function useSatteliteLayer() {
-  emit('use-sattelite-layer');
+function useSatelliteLayer() {
+  emit('use-satellite-layer');
 }
 </script>

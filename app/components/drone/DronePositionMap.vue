@@ -1,5 +1,5 @@
 <template>
-  <GlobalMapContainer :id="containerId" @zoomIn="map.zoomIn" @zoomOut="map.zoomOut" @useDefaultLayer="map.useDefaultMapTilesLayer" @useSatteliteLayer="map.useSatteliteMapTilesLayer" />
+  <GlobalMapContainer :id="containerId" @zoomIn="map.zoomIn" @zoomOut="map.zoomOut" @useDefaultLayer="map.useDefaultMapTilesLayer" @useSatelliteLayer="map.useSatelliteMapTilesLayer" />
 </template>
 
 <script setup lang="ts">
@@ -20,7 +20,7 @@ invariant(config !== undefined, 'Config is not provided.');
 
 const map = useGlobalMap(GlobalMap, {
   mapTilesDefaultApiUrl: config.mapTilesDefaultApiUrl,
-  mapTilesSatteliteApiUrl: config.mapTilesSatteliteApiUrl,
+  mapTilesSatelliteApiUrl: config.mapTilesSatelliteApiUrl,
   minZoom: 0,
   maxZoom: 20,
 });

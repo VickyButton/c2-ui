@@ -42,18 +42,18 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions: Global
 
   function useDefaultMapTilesLayer() {
     // Hide non-default map tiles layers.
-    map.hideSatteliteMapTilesLayer();
+    map.hideSatelliteMapTilesLayer();
 
     // Show default map tiles layer.
     map.showDefaultMapTilesLayer();
   }
 
-  function useSatteliteMapTilesLayer() {
-    // Hide non-sattelite map tiles layers.
+  function useSatelliteMapTilesLayer() {
+    // Hide non-satellite map tiles layers.
     map.hideDefaultMapTilesLayer();
 
-    // Show sattelite map tiles layer.
-    map.showSatteliteMapTilesLayer();
+    // Show satellite map tiles layer.
+    map.showSatelliteMapTilesLayer();
   }
 
   function addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
@@ -71,7 +71,7 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions: Global
     zoomIn,
     zoomOut,
     useDefaultMapTilesLayer,
-    useSatteliteMapTilesLayer,
+    useSatelliteMapTilesLayer,
     addIconMarker,
     removeIconMarker,
   };

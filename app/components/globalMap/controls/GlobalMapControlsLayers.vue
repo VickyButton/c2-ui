@@ -1,7 +1,7 @@
 <template>
   <menu class="flex flex-col gap-y-1 p-1">
     <li>
-      <BaseButtonIcon :title @click="toggleSatteliteMapTilesLayerVisibility">
+      <BaseButtonIcon :title @click="toggleSatelliteMapTilesLayerVisibility">
         <BaseIcon :name size="xs" />
       </BaseButtonIcon>
     </li>
@@ -11,18 +11,18 @@
 <script setup lang="ts">
 const emit = defineEmits<{
   (e: 'use-default-layer'): void;
-  (e: 'use-sattelite-layer'): void;
+  (e: 'use-satellite-layer'): void;
 }>();
 
-const showSatteliteMapTilesLayer = ref(false);
-const title = computed(() => showSatteliteMapTilesLayer.value ? 'Use default map' : 'Use sattelite map');
-const name = computed(() => showSatteliteMapTilesLayer.value ? 'map' : 'globe');
+const showSatelliteMapTilesLayer = ref(false);
+const title = computed(() => showSatelliteMapTilesLayer.value ? 'Use default map' : 'Use satellite map');
+const name = computed(() => showSatelliteMapTilesLayer.value ? 'map' : 'globe');
 
-function toggleSatteliteMapTilesLayerVisibility() {
-  showSatteliteMapTilesLayer.value = !showSatteliteMapTilesLayer.value;
+function toggleSatelliteMapTilesLayerVisibility() {
+  showSatelliteMapTilesLayer.value = !showSatelliteMapTilesLayer.value;
 
-  if (showSatteliteMapTilesLayer.value) {
-    emit('use-sattelite-layer');
+  if (showSatelliteMapTilesLayer.value) {
+    emit('use-satellite-layer');
   } else {
     emit ('use-default-layer');
   }
