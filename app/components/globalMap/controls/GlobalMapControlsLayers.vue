@@ -1,5 +1,5 @@
 <template>
-  <menu class="flex flex-col gap-y-1 p-1">
+  <menu class="flex flex-col gap-y-1">
     <li>
       <BaseButtonIcon :title @click="toggleSatelliteMapTilesLayerVisibility">
         <BaseIcon :name size="xs" />
