@@ -1,5 +1,5 @@
 <template>
-  <GlobalMapContainer :id="containerId" @zoomIn="map.zoomIn" @zoomOut="map.zoomOut" />
+  <GlobalMapContainer :id="containerId" @zoomIn="map.zoomIn" @zoomOut="map.zoomOut" @useDefaultLayer="map.useDefaultMapTilesLayer" @useSatteliteLayer="map.useSatteliteMapTilesLayer" />
 </template>
 
 <script setup lang="ts">
