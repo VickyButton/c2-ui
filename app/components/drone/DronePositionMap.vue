@@ -26,7 +26,7 @@ const map = useGlobalMap(GlobalMap, {
 });
 
 const { getIcon } = useIcon();
-const { createIconMarkerOptions } = useMarker(getIcon);
+const { createIconMarkerOptions } = useMarkerOptions(getIcon);
 const MARKER_ID = 'drone-position';
 const markerOptions = createIconMarkerOptions('drone');
 

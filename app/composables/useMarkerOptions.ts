@@ -1,6 +1,3 @@
-/*
-  This composable provides functionality for creating a map marker options object.
-*/
 const markerVariantColors = {
   default: {
     fillColor: 'rgba(46, 71, 170, 0.4)',
@@ -20,7 +17,11 @@ function getVariantColors(variant: string) {
 
 type GetIcon = (name: string) => { src: string };
 
-export function useMarker(getIcon: GetIcon) {
+/**
+ * Provides functionality for creating marker options objects.
+ * @param getIcon A function for retrieving an icon's src by icon name.
+ */
+export function useMarkerOptions(getIcon: GetIcon) {
   /**
    * Creates an icon marker options object.
    * @param name The name of the icon to use.
