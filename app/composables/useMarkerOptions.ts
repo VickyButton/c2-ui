@@ -3,6 +3,14 @@ const markerVariantColors = {
     fillColor: 'rgba(46, 71, 170, 0.4)',
     strokeColor: 'rgb(255, 255, 255)',
   },
+  warning: {
+    fillColor: 'rgba(234, 179, 8, 0.4)',
+    strokeColor: 'rgb(234, 179, 8)',
+  },
+  danger: {
+    fillColor: 'rgba(239, 68, 68, 0.4)',
+    strokeColor: 'rgb(239, 68, 68)',
+  },
 };
 
 type MarkerVariant = keyof typeof markerVariantColors;
