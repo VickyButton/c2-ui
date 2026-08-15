@@ -80,6 +80,10 @@ const icons = {
     src: `${ICONS_PATH}/route.png`,
     alt: 'Two points with lines connecting them at 90 degree angles.',
   },
+  waypoint: {
+    src: `${ICONS_PATH}/waypoint.png`,
+    alt: 'A waypoint.',
+  },
 };
 
 type IconName = keyof typeof icons;
