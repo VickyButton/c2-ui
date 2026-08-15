@@ -32,10 +32,10 @@ export interface GlobalMap {
   showSatelliteMapTilesLayer(): void;
   /** Shows the satellite map tiles layer. */
   hideSatelliteMapTilesLayer(): void;
-  /** Adds an icon marker at specified coordinates. */
-  addIconMarker(id: string, src: string, center: GlobalCoordinates2D, options?: IconMarkerOptions): void;
-  /** Removes an icon marker. */
-  removeIconMarker(id: string): void;
+  /** Adds a marker to the map. */
+  addMarker(id: string, src: string, center: GlobalCoordinates2D, options?: IconMarkerOptions): void;
+  /** Removes a marker from the map. */
+  removeMarker(id: string): void;
 }
 
 export interface GlobalMapOptions {

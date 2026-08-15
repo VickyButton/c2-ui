@@ -134,7 +134,7 @@ export class GlobalMapOL implements GlobalMap {
     this.mapTilesSatelliteLayer.setVisible(false);
   }
 
-  public addIconMarker(id: string, src: string, center: GlobalCoordinates2D, options?: IconMarkerOptions) {
+  public addMarker(id: string, src: string, center: GlobalCoordinates2D, options?: IconMarkerOptions) {
     // Create feature for icon marker.
     const iconMarkerFeature = this.createIconMarkerFeature(center, src, {
       fillColor: options?.fillColor,
@@ -212,7 +212,7 @@ export class GlobalMapOL implements GlobalMap {
     });
   }
 
-  public removeIconMarker(id: string) {
+  public removeMarker(id: string) {
     // Retrieve vector source.
     const source = this.markerLayer.getSource();
 

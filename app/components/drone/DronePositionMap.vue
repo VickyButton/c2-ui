@@ -36,12 +36,12 @@ const MARKER_OPTIONS = {
 onMounted(() => {
   map.load(containerId.value);
   map.setCenter(props.droneCoordinates);
-  map.addIconMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates, MARKER_OPTIONS);
+  map.addMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates, MARKER_OPTIONS);
 });
 
 watch(() => props.droneCoordinates, (newValue) => {
   map.setCenter(newValue);
-  map.removeIconMarker(MARKER_ID);
-  map.addIconMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates, MARKER_OPTIONS);
+  map.removeMarker(MARKER_ID);
+  map.addMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates, MARKER_OPTIONS);
 });
 </script>
