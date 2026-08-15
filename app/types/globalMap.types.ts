@@ -11,6 +11,7 @@ export interface GlobalCoordinates3D extends GlobalCoordinates2D {
 }
 
 export interface MarkerOptions {
+  iconSrc?: string;
   fillColor?: string;
   strokeColor?: string;
 }
@@ -33,7 +34,7 @@ export interface GlobalMap {
   /** Shows the satellite map tiles layer. */
   hideSatelliteMapTilesLayer(): void;
   /** Adds a marker to the map. */
-  addMarker(id: string, src: string, center: GlobalCoordinates2D, options?: MarkerOptions): void;
+  addMarker(id: string, center: GlobalCoordinates2D, options?: MarkerOptions): void;
   /** Removes a marker from the map. */
   removeMarker(id: string): void;
 }

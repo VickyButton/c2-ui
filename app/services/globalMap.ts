@@ -134,15 +134,16 @@ export class GlobalMapOL implements GlobalMap {
     this.mapTilesSatelliteLayer.setVisible(false);
   }
 
-  public addMarker(id: string, src: string, center: GlobalCoordinates2D, options?: MarkerOptions) {
-    // Create feature for icon marker.
-    const iconMarkerFeature = this.createIconMarkerFeature(center, src, {
+  public addMarker(id: string, center: GlobalCoordinates2D, options?: MarkerOptions) {
+    // Create feature for marker.
+    const markerFeature = this.createMarkerFeature(center, {
+      iconSrc: options?.iconSrc,
       fillColor: options?.fillColor,
       strokeColor: options?.strokeColor,
     });
 
     // Give feature a unique ID.
-    iconMarkerFeature.setId(id);
+    markerFeature.setId(id);
 
     // Retrieve vector source where feature will be added.
     const source = this.markerLayer.getSource();
@@ -151,21 +152,37 @@ export class GlobalMapOL implements GlobalMap {
     invariant(source !== null, 'Marker layer vector source is not defined.');
 
     // Add feature to vector source.
-    source.addFeature(iconMarkerFeature);
+    source.addFeature(markerFeature);
   }
 
-  private createIconMarkerFeature(center: GlobalCoordinates2D, src: string, options?: MarkerOptions) {
+  private createMarkerFeature(center: GlobalCoordinates2D, options?: MarkerOptions) {
+    const styles: Style[] = [];
+
+    // Create and add circle style, if fill color or stroke color is provided.
+    if (options?.fillColor || options?.strokeColor) {
+      const style = this.createCircleStyle(20, {
+        fillColor: options?.fillColor,
+        strokeColor: options?.strokeColor,
+      });
+
+      styles.push(style);
+    }
+
+    // Create and add icon style, if icon src is provided.
+    if (options?.iconSrc) {
+      const style = this.createIconStyle(options?.iconSrc);
+
+      styles.push(style);
+    }
+
+    // Create feature.
     const geometry = new Point([center.latitude, center.longitude]);
-    const circleStyle = this.createCircleStyle(20, {
-      fillColor: options?.fillColor,
-      strokeColor: options?.strokeColor,
-    });
-    const iconStyle = this.createIconStyle(src);
     const feature = new Feature({
       geometry,
     });
 
-    feature.setStyle([circleStyle, iconStyle]);
+    // Add styles to feature.
+    feature.setStyle(styles);
 
     return feature;
   }
@@ -203,12 +220,16 @@ export class GlobalMapOL implements GlobalMap {
     });
   }
 
-  private createIconStyle(src: string) {
+  private createIconStyle(src?: string) {
     return new Style({
-      image: new Icon({
-        src,
-        scale: 0.5,
-      }),
+      image: this.createIcon(src),
+    });
+  }
+
+  private createIcon(src?: string) {
+    return new Icon({
+      src,
+      scale: 0.5,
     });
   }
 
@@ -219,7 +240,7 @@ export class GlobalMapOL implements GlobalMap {
     // Assert that source is defined.
     invariant(source !== null, 'Marker layer vector source is not defined.');
 
-    // Retrieve icon marker feature.
+    // Retrieve marker feature.
     const feature = source.getFeatureById(id);
 
     // Add features to vector source.

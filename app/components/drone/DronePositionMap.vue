@@ -27,8 +27,8 @@ const map = useGlobalMap(GlobalMap, {
 });
 
 const MARKER_ID = 'drone-position';
-const MARKER_SRC = 'icons/drone.png';
 const MARKER_OPTIONS = {
+  iconSrc: 'icons/drone.png',
   fillColor: 'rgba(46, 71, 170, 0.4)',
   strokeColor: 'rgb(255, 255, 255)',
 }
@@ -36,12 +36,12 @@ const MARKER_OPTIONS = {
 onMounted(() => {
   map.load(containerId.value);
   map.setCenter(props.droneCoordinates);
-  map.addMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates, MARKER_OPTIONS);
+  map.addMarker(MARKER_ID, props.droneCoordinates, MARKER_OPTIONS);
 });
 
 watch(() => props.droneCoordinates, (newValue) => {
   map.setCenter(newValue);
   map.removeMarker(MARKER_ID);
-  map.addMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates, MARKER_OPTIONS);
+  map.addMarker(MARKER_ID, props.droneCoordinates, MARKER_OPTIONS);
 });
 </script>
