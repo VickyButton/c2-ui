@@ -18,6 +18,7 @@ const config = inject(CONFIG_INJECTION_KEY);
 invariant(GlobalMap !== undefined, 'GlobalMap constructor is not provided.');
 invariant(config !== undefined, 'Config is not provided.');
 
+// TODO: Create useDronePositionMap composable.
 const map = useGlobalMap(GlobalMap, {
   mapTilesDefaultApiUrl: config.mapTilesDefaultApiUrl,
   mapTilesSatelliteApiUrl: config.mapTilesSatelliteApiUrl,
@@ -27,16 +28,20 @@ const map = useGlobalMap(GlobalMap, {
 
 const MARKER_ID = 'drone-position';
 const MARKER_SRC = 'icons/drone.png';
+const MARKER_OPTIONS = {
+  fillColor: 'rgba(46, 71, 170, 0.4)',
+  strokeColor: 'rgb(255, 255, 255)',
+}
 
 onMounted(() => {
   map.load(containerId.value);
   map.setCenter(props.droneCoordinates);
-  map.addIconMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates);
+  map.addIconMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates, MARKER_OPTIONS);
 });
 
 watch(() => props.droneCoordinates, (newValue) => {
   map.setCenter(newValue);
   map.removeIconMarker(MARKER_ID);
-  map.addIconMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates);
+  map.addIconMarker(MARKER_ID, MARKER_SRC, props.droneCoordinates, MARKER_OPTIONS);
 });
 </script>

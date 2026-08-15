@@ -1,4 +1,4 @@
-import type { GlobalCoordinates2D, GlobalMapConstructor, GlobalMapOptions } from '~/types/globalMap.types';
+import type { GlobalCoordinates2D, GlobalMapConstructor, GlobalMapOptions, IconMarkerOptions } from '~/types/globalMap.types';
 
 const defaultOptions = {
   minZoom: 0,
@@ -56,8 +56,8 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions: Global
     map.showSatelliteMapTilesLayer();
   }
 
-  function addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D) {
-    map.addIconMarker(id, src, coordinates);
+  function addIconMarker(id: string, src: string, coordinates: GlobalCoordinates2D, options?: IconMarkerOptions) {
+    map.addIconMarker(id, src, coordinates, options);
   }
 
   function removeIconMarker(id: string) {

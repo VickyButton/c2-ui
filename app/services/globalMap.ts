@@ -1,4 +1,4 @@
-import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions } from '~/types/globalMap.types';
+import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions, IconMarkerOptions } from '~/types/globalMap.types';
 import { Feature, Map as MapOL, View } from 'ol';
 import { TileJSON, Vector, XYZ } from 'ol/source';
 import { useGeographic } from 'ol/proj';
@@ -134,9 +134,12 @@ export class GlobalMapOL implements GlobalMap {
     this.mapTilesSatelliteLayer.setVisible(false);
   }
 
-  public addIconMarker(id: string, src: string, center: GlobalCoordinates2D) {
+  public addIconMarker(id: string, src: string, center: GlobalCoordinates2D, options?: IconMarkerOptions) {
     // Create feature for icon marker.
-    const iconMarkerFeature = this.createIconMarkerFeature(center, src, 'rgba(46, 71, 170, 0.4)', 'rgb(255, 255, 255)');
+    const iconMarkerFeature = this.createIconMarkerFeature(center, src, {
+      fillColor: options?.fillColor,
+      strokeColor: options?.strokeColor,
+    });
 
     // Give feature a unique ID.
     iconMarkerFeature.setId(id);
@@ -151,9 +154,12 @@ export class GlobalMapOL implements GlobalMap {
     source.addFeature(iconMarkerFeature);
   }
 
-  private createIconMarkerFeature(center: GlobalCoordinates2D, src: string, fillColor: string, strokeColor: string) {
+  private createIconMarkerFeature(center: GlobalCoordinates2D, src: string, options?: IconMarkerOptions) {
     const geometry = new Point([center.latitude, center.longitude]);
-    const circleStyle = this.createCircleStyle(20, fillColor, strokeColor);
+    const circleStyle = this.createCircleStyle(20, {
+      fillColor: options?.fillColor,
+      strokeColor: options?.strokeColor,
+    });
     const iconStyle = this.createIconStyle(src);
     const feature = new Feature({
       geometry,
@@ -164,17 +170,36 @@ export class GlobalMapOL implements GlobalMap {
     return feature;
   }
 
-  private createCircleStyle(radius: number, fillColor: string, strokeColor: string) {
+  private createCircleStyle(radius: number, options?: {
+    fillColor?: string;
+    strokeColor?: string;
+  }) {
+    const image = new CircleStyle({
+      radius,
+    });
+
+    if (options?.fillColor) {
+      image.setFill(this.createFill(options.fillColor));
+    }
+
+    if (options?.strokeColor) {
+      image.setStroke(this.createStroke(options.strokeColor));
+    }
+
     return new Style({
-      image: new CircleStyle({
-        radius,
-        fill: new Fill({
-          color: fillColor,
-        }),
-        stroke: new Stroke({
-          color: strokeColor,
-        }),
-      }),
+      image,
+    });
+  }
+
+  private createFill(color: string) {
+    return new Fill({
+      color,
+    });
+  }
+
+  private createStroke(color: string) {
+    return new Stroke({
+      color,
     });
   }
 

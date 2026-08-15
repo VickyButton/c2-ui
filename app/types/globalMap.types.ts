@@ -10,6 +10,11 @@ export interface GlobalCoordinates3D extends GlobalCoordinates2D {
   altitude: number;
 }
 
+export interface IconMarkerOptions {
+  fillColor?: string;
+  strokeColor?: string;
+}
+
 export interface GlobalMap {
   /** The current zoom value of the map view. */
   readonly zoom: number;
@@ -28,7 +33,7 @@ export interface GlobalMap {
   /** Shows the satellite map tiles layer. */
   hideSatelliteMapTilesLayer(): void;
   /** Adds an icon marker at specified coordinates. */
-  addIconMarker(id: string, src: string, center: GlobalCoordinates2D): void;
+  addIconMarker(id: string, src: string, center: GlobalCoordinates2D, options?: IconMarkerOptions): void;
   /** Removes an icon marker. */
   removeIconMarker(id: string): void;
 }
