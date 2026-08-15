@@ -80,6 +80,10 @@ const icons = {
     src: `${ICONS_PATH}/route.png`,
     alt: 'Two points with lines connecting them at 90 degree angles.',
   },
+  target: {
+    src: `${ICONS_PATH}/target.png`,
+    alt: 'A target with 5 rings.',
+  },
   waypoint: {
     src: `${ICONS_PATH}/waypoint.png`,
     alt: 'A waypoint.',
