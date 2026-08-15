@@ -1,4 +1,4 @@
-import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions, IconMarkerOptions } from '~/types/globalMap.types';
+import type { GlobalCoordinates2D, GlobalMap, GlobalMapOptions, MarkerOptions } from '~/types/globalMap.types';
 import { Feature, Map as MapOL, View } from 'ol';
 import { TileJSON, Vector, XYZ } from 'ol/source';
 import { useGeographic } from 'ol/proj';
@@ -134,7 +134,7 @@ export class GlobalMapOL implements GlobalMap {
     this.mapTilesSatelliteLayer.setVisible(false);
   }
 
-  public addMarker(id: string, src: string, center: GlobalCoordinates2D, options?: IconMarkerOptions) {
+  public addMarker(id: string, src: string, center: GlobalCoordinates2D, options?: MarkerOptions) {
     // Create feature for icon marker.
     const iconMarkerFeature = this.createIconMarkerFeature(center, src, {
       fillColor: options?.fillColor,
@@ -154,7 +154,7 @@ export class GlobalMapOL implements GlobalMap {
     source.addFeature(iconMarkerFeature);
   }
 
-  private createIconMarkerFeature(center: GlobalCoordinates2D, src: string, options?: IconMarkerOptions) {
+  private createIconMarkerFeature(center: GlobalCoordinates2D, src: string, options?: MarkerOptions) {
     const geometry = new Point([center.latitude, center.longitude]);
     const circleStyle = this.createCircleStyle(20, {
       fillColor: options?.fillColor,
