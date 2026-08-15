@@ -34,9 +34,11 @@ export interface GlobalMap {
   /** Shows the satellite map tiles layer. */
   hideSatelliteMapTilesLayer(): void;
   /** Adds a marker to the map. */
-  addMarker(id: string, center: GlobalCoordinates2D, options?: MarkerOptions): void;
+  addMarker(id: string, coordinates: GlobalCoordinates2D, options?: MarkerOptions): void;
   /** Removes a marker from the map. */
   removeMarker(id: string): void;
+  /** Moves a marker on the map. */
+  updateMarkerCoordinates(id: string, coordinates: GlobalCoordinates2D): void;
 }
 
 export interface GlobalMapOptions {

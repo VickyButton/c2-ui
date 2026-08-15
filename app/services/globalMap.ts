@@ -134,9 +134,9 @@ export class GlobalMapOL implements GlobalMap {
     this.mapTilesSatelliteLayer.setVisible(false);
   }
 
-  public addMarker(id: string, center: GlobalCoordinates2D, options?: MarkerOptions) {
+  public addMarker(id: string, coordinates: GlobalCoordinates2D, options?: MarkerOptions) {
     // Create feature for marker.
-    const markerFeature = this.createMarkerFeature(center, {
+    const markerFeature = this.createMarkerFeature(coordinates, {
       iconSrc: options?.iconSrc,
       fillColor: options?.fillColor,
       strokeColor: options?.strokeColor,
@@ -155,7 +155,7 @@ export class GlobalMapOL implements GlobalMap {
     source.addFeature(markerFeature);
   }
 
-  private createMarkerFeature(center: GlobalCoordinates2D, options?: MarkerOptions) {
+  private createMarkerFeature(coordinates: GlobalCoordinates2D, options?: MarkerOptions) {
     const styles: Style[] = [];
 
     // Create and add circle style, if fill color or stroke color is provided.
@@ -176,7 +176,7 @@ export class GlobalMapOL implements GlobalMap {
     }
 
     // Create feature.
-    const geometry = new Point([center.latitude, center.longitude]);
+    const geometry = new Point([coordinates.latitude, coordinates.longitude]);
     const feature = new Feature({
       geometry,
     });
@@ -245,5 +245,19 @@ export class GlobalMapOL implements GlobalMap {
 
     // Add features to vector source.
     source.removeFeature(feature);
+  }
+
+  public updateMarkerCoordinates(id: string, coordinates: GlobalCoordinates2D) {
+    // Retrieve vector source.
+    const source = this.markerLayer.getSource();
+
+    // Assert that source is defined.
+    invariant(source !== null, 'Marker layer vector source is not defined.');
+
+    // Retrieve marker feature.
+    const feature = source.getFeatureById(id);
+
+    // Update feature geometry coordinates.
+    feature.getGeometry().setCoordinates([coordinates.latitude, coordinates.longitude]);
   }
 }

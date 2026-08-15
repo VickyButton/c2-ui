@@ -38,7 +38,6 @@ onMounted(() => {
 
 watch(() => props.droneCoordinates, (newValue) => {
   map.setCenter(newValue);
-  map.removeMarker(MARKER_ID);
-  map.addMarker(MARKER_ID, newValue, markerOptions);
+  map.updateMarkerCoordinates(MARKER_ID, newValue);
 });
 </script>

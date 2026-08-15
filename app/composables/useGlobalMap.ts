@@ -56,12 +56,16 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions: Global
     map.showSatelliteMapTilesLayer();
   }
 
-  function addMarker(id: string, center: GlobalCoordinates2D, options?: MarkerOptions) {
-    map.addMarker(id, center, options);
+  function addMarker(id: string, coordinates: GlobalCoordinates2D, options?: MarkerOptions) {
+    map.addMarker(id, coordinates, options);
   }
 
   function removeMarker(id: string) {
     map.removeMarker(id);
+  }
+
+  function updateMarkerCoordinates(id: string, coordinates: GlobalCoordinates2D) {
+    map.updateMarkerCoordinates(id, coordinates);
   }
 
   return {
@@ -74,5 +78,6 @@ export function useGlobalMap(GlobalMap: GlobalMapConstructor, mapOptions: Global
     useSatelliteMapTilesLayer,
     addMarker,
     removeMarker,
+    updateMarkerCoordinates,
   };
 }
