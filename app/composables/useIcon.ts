@@ -1,5 +1,9 @@
 const ICONS_PATH = '/icons';
 const icons = {
+  alert: {
+    src: `${ICONS_PATH}/alert.png`,
+    alt: 'A circle with an exclamation mark enclosed.',
+  },
   'arrow-right': {
     src: `${ICONS_PATH}/arrow-right.png`,
     alt: 'An arrow pointing to the right.',
