@@ -160,7 +160,7 @@ export class GlobalMapOL implements GlobalMap {
 
     // Create and add circle style, if fill color or stroke color is provided.
     if (options?.fillColor || options?.strokeColor) {
-      const style = this.createCircleStyle(20, {
+      const style = this.createCircleStyle(22, {
         fillColor: options?.fillColor,
         strokeColor: options?.strokeColor,
       });
