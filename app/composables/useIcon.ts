@@ -84,12 +84,12 @@ const icons = {
 
 type IconName = keyof typeof icons;
 
-function isIcon(name: string): name is IconName {
-  return name in icons;
+function isIconName(value: string): value is IconName {
+  return value in icons;
 }
 
 function getIcon(name: string) {
-  return isIcon(name) ? icons[name] : icons['question-mark'];
+  return isIconName(name) ? icons[name] : icons['question-mark'];
 }
 
 export function useIcon() {
